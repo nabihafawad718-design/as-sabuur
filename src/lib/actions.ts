@@ -45,6 +45,7 @@ export async function submitTrialBooking(_prev: FormState, formData: FormData): 
     fullName: String(formData.get("fullName") ?? ""),
     ageGroup: String(formData.get("ageGroup") ?? "Kid"),
     learningGoal: String(formData.get("learningGoal") ?? ""),
+    preferredSchedule: String(formData.get("preferredSchedule") ?? ""),
     timezone: String(formData.get("timezone") ?? ""),
     contact: String(formData.get("contact") ?? ""),
     notes: String(formData.get("notes") ?? ""),
@@ -52,6 +53,13 @@ export async function submitTrialBooking(_prev: FormState, formData: FormData): 
 
   const parsed = trialBookingSchema.safeParse(raw);
   if (!parsed.success) return { success: false, errors: toErrors(parsed.error) };
+
+  // The database schema is unchanged, so the preferred schedule is folded into
+  // the existing notes column in a labelled, readable form for the admin desk.
+  const composedNotes = [`Preferred time: ${parsed.data.preferredSchedule}`, parsed.data.notes ?? ""]
+    .filter(Boolean)
+    .join("\n")
+    .slice(0, 500);
 
   try {
     const [row] = await db
@@ -62,7 +70,7 @@ export async function submitTrialBooking(_prev: FormState, formData: FormData): 
         learningGoal: parsed.data.learningGoal,
         timezone: parsed.data.timezone,
         contact: parsed.data.contact,
-        notes: parsed.data.notes ?? "",
+        notes: composedNotes,
         status: "new",
       })
       .returning({ id: trialBookings.id });
@@ -226,12 +234,19 @@ export async function submitMessage(_prev: FormState, formData: FormData): Promi
 export type LoginState = { error?: string };
 
 export async function login(_prev: LoginState, formData: FormData): Promise<LoginState> {
+  if (!PASSCODE) {
+    return {
+      error:
+        "Admin sign-in is not configured. Set ADMIN_PASSCODE and ADMIN_SECRET in your environment before using the portal.",
+    };
+  }
   const passcode = String(formData.get("passcode") ?? "");
-  if (passcode !== PASSCODE) return { error: "Incorrect steward passcode." };
+  if (passcode !== PASSCODE) return { error: "Incorrect passcode." };
   const store = await cookies();
   store.set(COOKIE_NAME, createToken(), {
     httpOnly: true,
     sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
     path: "/",
     maxAge: 60 * 60 * 8,
   });

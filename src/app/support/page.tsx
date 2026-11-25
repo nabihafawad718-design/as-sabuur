@@ -4,24 +4,42 @@ import { PageHeader } from "@/components/ui/page-header";
 import { PledgeForm } from "@/components/support/pledge-form";
 
 export const metadata: Metadata = {
-  title: "Support & Waqf Stewardship",
-  description: "Sustain As-Sabuur Sanctuary — keeping all study circles, dawn gatherings, and sacred resources freely open.",
+  title: "Support the Academy",
+  description:
+    "Support As-Sabuur's free community circles and assisted places. Lessons are paid for; the academy's community teaching is funded by voluntary pledges.",
+  alternates: { canonical: "/support" },
 };
 
 const allocations = [
-  { icon: BookOpen, title: "Scholar & Teacher Stipends", text: "Supports full-time resident teachers so every study circle remains free for all." },
-  { icon: Compass, title: "Sanctuary Courtyard & Audio", text: "Maintains dawn audio streaming, archive recordings, and study booklets." },
-  { icon: Coffee, title: "Hospitality & Retreats", text: "Covers tea, dates, calligraphy supplies, and monthly Layali As-Sabuur evenings." },
-  { icon: ShieldCheck, title: "100% Transparent Endowment", text: "Zero corporate ads, zero paywalls, and annual community stewardship reports." },
+  {
+    icon: BookOpen,
+    title: "Assisted places",
+    text: "Contributes towards lessons for families who genuinely cannot afford the full monthly fee.",
+  },
+  {
+    icon: Compass,
+    title: "Free community circles",
+    text: "Covers the running costs of the gatherings and study circles that remain open to everyone at no charge.",
+  },
+  {
+    icon: Coffee,
+    title: "Teacher time",
+    text: "Funds preparation time, materials and the additional teaching hours that community classes require.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Plain records",
+    text: "Every pledge is recorded with a reference. Ask at any time for a summary of what was received and where it went.",
+  },
 ];
 
 export default function SupportPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Waqf & Stewardship · الْوَقْفُ"
-        title="Sustain a sanctuary that never closes its doors"
-        description="Every circle, dawn gathering, and study resource at As-Sabuur is kept free of charge through quiet community stewardship."
+        eyebrow="Support · الْوَقْف"
+        title="Keep the community teaching open"
+        description="As-Sabuur's one-to-one lessons are paid for by the families who take them. Its free circles and assisted places are not — those are funded by voluntary pledges."
         crumbs={[["Support", "/support"]]}
       />
       <section className="wrap py-14 lg:py-20">
@@ -38,6 +56,10 @@ export default function SupportPage() {
                 </div>
               </div>
             ))}
+            <p className="rounded-xl border border-ivory-200 bg-ivory-100/60 p-4 text-xs leading-relaxed text-stone-600">
+              A pledge recorded here is an intention, not a payment. The academy will contact you to arrange it. No
+              card details are collected on this website.
+            </p>
           </div>
           <PledgeForm />
         </div>

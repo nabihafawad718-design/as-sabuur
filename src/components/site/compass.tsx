@@ -14,16 +14,17 @@ type CompassItem = {
 };
 
 const staticItems: CompassItem[] = [
-  { title: "Sanctuary Home", subtitle: "Courtyard entrance, verse of the day & pillars", href: "/", arabic: "الرئيسية", group: "Destinations" },
-  { title: "99 Names Gallery", subtitle: "Explore Al-Asma ul-Husna & As-Sabuur (#99)", href: "/names", arabic: "الأسماء الحسنى", group: "Destinations" },
-  { title: "Dhikr & Tasbih Sanctuary", subtitle: "Interactive digital tasbih & Prophetic duas", href: "/dhikr", arabic: "الذكر والدعاء", group: "Practices" },
-  { title: "Gatherings & Circles", subtitle: "Reserve seats for Tafsir, dawn dhikr & retreats", href: "/programs", arabic: "المجالس", group: "Destinations" },
-  { title: "The Sabuur Journal", subtitle: "Essays on Sabrun Jameel, stillness & tawakkul", href: "/journal", arabic: "الرسائل", group: "Destinations" },
-  { title: "Wall of Steadfastness", subtitle: "Share a dua request & whisper Ameen for others", href: "/reflections", arabic: "جدار الدعاء", group: "Practices" },
-  { title: "Support & Waqf Stewardship", subtitle: "Sustain scholarships, tea hospitality & archives", href: "/support", arabic: "الوقف والعطاء", group: "Destinations" },
-  { title: "WordPress Theme & Static Export", subtitle: "Download valid WP theme ZIP or static files for as-sabuur.com", href: "/wp-theme", arabic: "تصدير", group: "Destinations" },
-  { title: "About As-Sabuur", subtitle: "Our ethos, resident scholars & sacred geometry", href: "/about", arabic: "عن الدار", group: "Destinations" },
-  { title: "Contact & Steward Desk", subtitle: "Reach a sanctuary coordinator directly", href: "/contact", arabic: "تواصل", group: "Destinations" },
+  { title: "Home", subtitle: "Courses, teaching approach and the free trial", href: "/", arabic: "الرئيسية", group: "Destinations" },
+  { title: "Courses & Programs", subtitle: "Qaida, reading, Tajweed, Hifz and Quranic Arabic", href: "/courses", arabic: "الدورات", group: "Destinations" },
+  { title: "Pricing", subtitle: "Monthly plans, family discounts and prepayment", href: "/pricing", arabic: "الأسعار", group: "Destinations" },
+  { title: "About As-Sabuur", subtitle: "Our story, teaching philosophy and standards", href: "/about", arabic: "عن الدار", group: "Destinations" },
+  { title: "Contact & Free Trial", subtitle: "Book a free 30-minute class or send a question", href: "/contact", arabic: "تواصل", group: "Destinations" },
+  { title: "99 Names Gallery", subtitle: "Explore Al-Asma ul-Husna and the name As-Sabuur", href: "/names", arabic: "الأسماء الحسنى", group: "Destinations" },
+  { title: "Gatherings & Circles", subtitle: "Reserve a seat at a free study circle", href: "/programs", arabic: "المجالس", group: "Destinations" },
+  { title: "The Journal", subtitle: "Essays on patience, learning and sacred study", href: "/journal", arabic: "الرسائل", group: "Destinations" },
+  { title: "Dhikr & Tasbih", subtitle: "An interactive counter for daily remembrance", href: "/dhikr", arabic: "الذكر والدعاء", group: "Practices" },
+  { title: "Dua Wall", subtitle: "Share a dua request and say Ameen for others", href: "/reflections", arabic: "جدار الدعاء", group: "Practices" },
+  { title: "Support the Academy", subtitle: "Help keep community circles free to attend", href: "/support", arabic: "الوقف والعطاء", group: "Destinations" },
 ];
 
 export function SanctuaryCompass({

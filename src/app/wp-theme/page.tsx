@@ -1,25 +1,15 @@
-import type { Metadata } from "next";
-import { PageHeader } from "@/components/ui/page-header";
-import { WpPackagerClient } from "@/components/wp/wp-packager-client";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "WordPress Theme & Direct Hosting Packager",
-  description:
-    "Download a valid WordPress theme ZIP with style.css and index.php for as-sabuur.com, download a direct static HTML bundle, or wrap an existing ZIP.",
-};
-
+/**
+ * The WordPress/static-site packager was removed.
+ *
+ * It generated a second, parallel copy of the site from a hard-coded template
+ * that no longer matched this codebase: it repeated unverified claims
+ * ("certified tutors", "35+ countries") and depended on five image files that
+ * were blank placeholders. Serving it would have published an inconsistent and
+ * misleading duplicate of the academy. Old links are redirected to the home
+ * page so nothing 404s.
+ */
 export default function WpThemePage() {
-  return (
-    <>
-      <PageHeader
-        eyebrow="Deployment & WordPress Packager"
-        title="WordPress Theme & Direct Hosting for as-sabuur.com"
-        description="WordPress requires a top-level theme folder containing style.css (with a Theme Name header) and index.php. Download a ready-to-upload theme ZIP or direct static site package below."
-        crumbs={[["WordPress Packager", "/wp-theme"]]}
-      />
-      <section className="wrap py-14 lg:py-20">
-        <WpPackagerClient />
-      </section>
-    </>
-  );
+  redirect("/");
 }

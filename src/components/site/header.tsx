@@ -3,40 +3,24 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ChevronDown, Compass, Menu, Moon, Search, Sparkles, X } from "lucide-react";
+import { ChevronDown, Compass, Menu, MessageCircle, Search, Sparkles, X } from "lucide-react";
 import { Logo } from "./logo";
 import { SanctuaryCompass } from "./compass";
 import { useTrialDrawer } from "@/components/trial/trial-drawer";
-
-const nav = [
-  { href: "/#experience", label: "Experience" },
-  { href: "/#courses", label: "Courses" },
-  { href: "/names", label: "99 Names" },
-  { href: "/dhikr", label: "Dhikr" },
-  { href: "/programs", label: "Gatherings" },
-  { href: "/journal", label: "Journal" },
-  { href: "/reflections", label: "Dua Wall" },
-];
-
-const exploreMenu = [
-  { href: "/#experience", title: "Feel the Experience", desc: "Switch Kids vs Adults & try Tajweed audio cards", badge: "Interactive" },
-  { href: "/#courses", title: "4 Learning Tracks", desc: "Qaida, Tajweed, Hifz & Quranic Arabic 1-on-1", badge: "Tracks" },
-  { href: "/names", title: "99 Names Gallery", desc: "Contemplate Al-Asma ul-Husna & As-Sabuur", badge: "99" },
-  { href: "/dhikr", title: "Tasbih & Adhkar", desc: "Interactive counter & Prophetic supplications", badge: "Live" },
-  { href: "/programs", title: "Sacred Gatherings", desc: "Tafsir circles, dawn dhikr & calligraphy retreats", badge: "RSVP" },
-  { href: "/reflections", title: "Wall of Steadfastness", desc: "Offer a prayer note & say Ameen together", badge: "Community" },
-];
+import { EXPLORE_NAV, PRIMARY_NAV, SITE, whatsappHref } from "@/data/site";
 
 export function Header() {
   const pathname = usePathname();
   const { openTrial } = useTrialDrawer();
-  const [scrolled, setScrolled] = useState(() => typeof window !== "undefined" && window.scrollY > 8);
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [compassOpen, setCompassOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
+  const wa = whatsappHref("Assalamu alaykum — I'd like to ask about online Quran classes.");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -59,28 +43,43 @@ export function Header() {
     };
   }, [open]);
 
+  useEffect(() => {
+    setOpen(false);
+    setExploreOpen(false);
+  }, [pathname]);
+
+  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+
   return (
     <>
       <div className="border-b border-pine-900/10 bg-pine-950 text-[11px] text-ivory-100/80">
         <div className="wrap flex h-9 items-center justify-between gap-4">
-          <p className="flex items-center gap-2 truncate">
-            <Moon className="h-3.5 w-3.5 shrink-0 text-gold-300" />
-            <span className="font-arabic text-sm text-gold-300" lang="ar" dir="rtl">
+          <p className="flex min-w-0 items-center gap-2 truncate">
+            <span className="font-arabic shrink-0 text-sm text-gold-300" lang="ar" dir="rtl">
               ٱلصَّبُور
             </span>
-            <span className="hidden sm:inline">
-              · Global 1-on-1 Online Quran Learning for Kids &amp; Adults Across Every Time Zone
+            <span className="truncate">
+              <span className="hidden sm:inline">An established Quran teaching house · </span>
+              Now teaching online, worldwide
             </span>
           </p>
           <div className="flex shrink-0 items-center gap-4">
-            <Link href="/about" className="hidden hover:text-gold-300 md:inline">
-              Our Scholars
-            </Link>
-            <Link href="/support" className="hover:text-gold-300">
-              Waqf
-            </Link>
+            {wa && (
+              <a
+                href={wa}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden items-center gap-1.5 hover:text-gold-300 sm:inline-flex"
+              >
+                <MessageCircle className="h-3.5 w-3.5" />
+                {SITE.whatsappDisplay}
+              </a>
+            )}
             <Link href="/contact" className="hover:text-gold-300">
-              Contact
+              Free trial
+            </Link>
+            <Link href="/about" className="hidden hover:text-gold-300 md:inline">
+              About
             </Link>
           </div>
         </div>
@@ -96,7 +95,20 @@ export function Header() {
         <div className="wrap flex h-18 items-center justify-between gap-4">
           <Logo />
 
-          <nav className="hidden items-center gap-5 xl:gap-6 lg:flex" aria-label="Main navigation">
+          <nav className="hidden items-center gap-6 lg:flex" aria-label="Main navigation">
+            {PRIMARY_NAV.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`relative py-1 text-sm transition-colors hover:text-pine-900 ${
+                  isActive(item.href) ? "font-semibold text-pine-900" : "font-medium text-stone-600"
+                }`}
+              >
+                {item.label}
+                {isActive(item.href) && <span className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-gold-500" />}
+              </Link>
+            ))}
+
             <div
               className="relative"
               onMouseEnter={() => setExploreOpen(true)}
@@ -106,15 +118,15 @@ export function Header() {
                 type="button"
                 onClick={() => setExploreOpen((v) => !v)}
                 aria-expanded={exploreOpen}
-                className="inline-flex items-center gap-1 py-2 text-sm font-semibold text-pine-900 transition-colors hover:text-pine-700"
+                className="inline-flex items-center gap-1 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-pine-900"
               >
                 Explore
                 <ChevronDown className={`h-4 w-4 transition-transform ${exploreOpen ? "rotate-180" : ""}`} />
               </button>
               {exploreOpen && (
-                <div className="absolute left-0 top-full w-[540px] pt-2">
-                  <div className="grid grid-cols-2 gap-2 rounded-2xl border border-ivory-200 bg-white p-3 shadow-lift">
-                    {exploreMenu.map((item) => (
+                <div className="absolute left-1/2 top-full w-[560px] -translate-x-1/2 pt-3">
+                  <div className="grid grid-cols-2 gap-1 rounded-2xl border border-ivory-200 bg-white p-3 shadow-lift">
+                    {EXPLORE_NAV.map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}
@@ -134,22 +146,6 @@ export function Header() {
                 </div>
               )}
             </div>
-
-            {nav.map((item) => {
-              const active = item.href !== "/#experience" && item.href !== "/#courses" && (pathname === item.href || pathname.startsWith(`${item.href}/`));
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`relative py-1 text-sm font-medium transition-colors hover:text-pine-900 ${
-                    active ? "font-semibold text-pine-800" : "text-stone-600"
-                  }`}
-                >
-                  {item.label}
-                  {active && <span className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-gold-500" />}
-                </Link>
-              );
-            })}
           </nav>
 
           <div className="hidden items-center gap-2.5 lg:flex">
@@ -157,19 +153,15 @@ export function Header() {
               type="button"
               onClick={() => setCompassOpen(true)}
               className="inline-flex items-center gap-2 rounded-full border border-ivory-300 bg-white/85 px-3 py-2 text-xs font-semibold text-stone-600 transition hover:border-pine-500 hover:text-pine-900"
-              aria-label="Open Sanctuary Compass navigator"
+              aria-label="Open site search"
             >
               <Compass className="h-3.5 w-3.5 text-gold-600" />
-              <span className="hidden xl:inline">Compass</span>
+              <span className="hidden xl:inline">Search</span>
               <kbd className="rounded bg-ivory-100 px-1.5 py-0.5 font-mono text-[10px] text-stone-500">⌘K</kbd>
             </button>
-            <button
-              type="button"
-              onClick={() => openTrial()}
-              className="btn btn-primary !px-5 !py-2.5 !text-sm"
-            >
+            <button type="button" onClick={() => openTrial()} className="btn btn-primary !px-5 !py-2.5 !text-sm">
               <Sparkles className="h-3.5 w-3.5 text-gold-300" />
-              Book Free Trial
+              Book free trial
             </button>
           </div>
 
@@ -177,7 +169,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setCompassOpen(true)}
-              aria-label="Search and navigate"
+              aria-label="Search the site"
               className="grid h-10 w-10 place-items-center rounded-full border border-ivory-300 bg-white text-pine-900"
             >
               <Search className="h-4 w-4" />
@@ -197,14 +189,7 @@ export function Header() {
         {open && (
           <div className="fixed inset-x-0 bottom-0 top-[6.75rem] z-40 overflow-y-auto bg-ivory-50 lg:hidden">
             <nav className="wrap flex flex-col py-6" aria-label="Mobile navigation">
-              <Link
-                href="/"
-                onClick={() => setOpen(false)}
-                className="flex items-center justify-between border-b border-ivory-200 py-4 font-display text-2xl text-pine-950"
-              >
-                Home
-              </Link>
-              {nav.map((item) => (
+              {PRIMARY_NAV.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -214,20 +199,17 @@ export function Header() {
                   {item.label}
                 </Link>
               ))}
-              <Link
-                href="/about"
-                onClick={() => setOpen(false)}
-                className="flex items-center justify-between border-b border-ivory-200 py-4 font-display text-2xl text-pine-950"
-              >
-                About &amp; Scholars
-              </Link>
-              <Link
-                href="/contact"
-                onClick={() => setOpen(false)}
-                className="flex items-center justify-between border-b border-ivory-200 py-4 font-display text-2xl text-pine-950"
-              >
-                Contact
-              </Link>
+              <p className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-gold-700">Explore</p>
+              {EXPLORE_NAV.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between border-b border-ivory-200 py-3.5 text-base text-pine-900"
+                >
+                  {item.title}
+                </Link>
+              ))}
               <button
                 type="button"
                 onClick={() => {
@@ -236,8 +218,11 @@ export function Header() {
                 }}
                 className="btn btn-gold mt-6 w-full"
               >
-                Book a Free Trial Class
+                Book a free 30-minute trial
               </button>
+              <a href={`mailto:${SITE.email}`} className="mt-4 text-center text-sm text-stone-500">
+                {SITE.email}
+              </a>
             </nav>
           </div>
         )}

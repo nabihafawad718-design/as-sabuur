@@ -32,10 +32,11 @@ export const pledgeSchema = z.object({
 export const trialBookingSchema = z.object({
   fullName: z.string().trim().min(2, "Please enter the student’s or parent’s name").max(80),
   ageGroup: z.enum(["Kid", "Adult"], "Choose Kid or Adult"),
-  learningGoal: z.string().trim().min(2, "Please select a learning goal").max(120),
+  learningGoal: z.string().trim().min(2, "Please select a course").max(120),
+  preferredSchedule: z.string().trim().min(2, "Choose a preferred time of day").max(80),
   timezone: z.string().trim().min(2, "Please choose or enter your time zone").max(80),
   contact: z.string().trim().min(5, "Enter a valid WhatsApp number or email").max(120),
-  notes: z.string().trim().max(500).optional(),
+  notes: z.string().trim().max(320).optional(),
 });
 
 export const contactMessageSchema = z.object({

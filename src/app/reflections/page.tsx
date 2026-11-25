@@ -10,6 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Wall of Steadfastness & Duas",
   description: "Share a dua request or reflection on Sabr, and say Ameen for fellow believers across the world.",
+  alternates: { canonical: "/reflections" },
 };
 
 export default async function ReflectionsPage() {

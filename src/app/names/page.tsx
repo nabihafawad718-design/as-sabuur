@@ -6,6 +6,7 @@ import { CtaBand } from "@/components/home/sections";
 export const metadata: Metadata = {
   title: "99 Names Gallery · Al-Asma ul-Husna",
   description: "Explore the Divine Names of Allah with Arabic calligraphy, meanings, and reflections on steadfastness, mercy, and peace.",
+  alternates: { canonical: "/names" },
 };
 
 export default async function NamesPage({

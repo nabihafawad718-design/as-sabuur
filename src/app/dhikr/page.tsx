@@ -6,6 +6,7 @@ import { CtaBand } from "@/components/home/sections";
 export const metadata: Metadata = {
   title: "Dhikr & Tasbih Sanctuary",
   description: "An interactive Tasbih counter and Prophetic adhkar sanctuary for stillness, gratitude, and patience.",
+  alternates: { canonical: "/dhikr" },
 };
 
 export default function DhikrPage() {

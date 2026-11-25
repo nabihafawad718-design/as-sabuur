@@ -361,6 +361,13 @@
       animation: none;
     }
   }
+  /* Scroll reveals depend on JavaScript. Without it, show the content. */
+  @media (scripting: none) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
 
 @utility bg-pattern-light {
@@ -371,4 +378,61 @@
 @utility bg-pattern-dark {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72' fill='none' stroke='%23e3c87b' stroke-opacity='0.14' stroke-width='1'%3E%3Cpath d='M36 4 68 36 36 68 4 36Z'/%3E%3Cpath d='M13 13h46v46H13z' transform='rotate(45 36 36)'/%3E%3Ccircle cx='36' cy='36' r='3.5'/%3E%3C/svg%3E");
   background-size: 72px 72px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Editorial system additions                                          */
+/* ------------------------------------------------------------------ */
+
+@layer components {
+  /* A quiet paper grain, layered over art panels */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  }
+
+  .rule-hair {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(154 116 33 / 0.35), transparent);
+  }
+
+  .panel-ink {
+    background-color: var(--color-pine-950);
+    color: var(--color-ivory-100);
+  }
+
+  .numeral {
+    font-family: var(--font-display);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.08em;
+  }
+
+  .link-quiet {
+    color: var(--color-pine-800);
+    text-decoration: underline;
+    text-decoration-color: rgb(154 116 33 / 0.4);
+    text-underline-offset: 4px;
+    transition: text-decoration-color 0.2s ease, color 0.2s ease;
+  }
+  .link-quiet:hover {
+    color: var(--color-pine-950);
+    text-decoration-color: var(--color-gold-500);
+  }
+
+  .faq[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+  .faq[open] summary {
+    color: var(--color-pine-950);
+  }
+
+  .vertical-ar {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    letter-spacing: 0.08em;
+  }
 }

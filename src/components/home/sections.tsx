@@ -42,8 +42,8 @@ export function VerseBand({ verse }: { verse: typeof verses.$inferSelect | null 
 }
 
 export function CtaBand({
-  title = "Your first 30-minute class is our gift to you",
-  text = "Meet your teacher, experience the calm pace of As-Sabuur, and walk away with a clear learning plan — zero card required.",
+  title = "The first lesson is on us",
+  text = "Meet the teacher, hear your child read, and leave with a written recommendation for the right course and pace. No card details, no obligation.",
 }: {
   title?: string;
   text?: string;
@@ -84,11 +84,11 @@ export function CtaBand({
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <button type="button" onClick={() => openTrial()} className="btn btn-gold !px-7 !py-4 !text-base">
               <Sparkles className="h-4 w-4" />
-              Book Your Free Trial Class
+              Book your free trial class
               <ArrowRight className="h-4 w-4" />
             </button>
-            <Link href="/programs" className="btn btn-light !px-6 !py-4">
-              Browse Study Circles
+            <Link href="/pricing" className="btn btn-light !px-6 !py-4">
+              See the plans
             </Link>
           </div>
         </div>

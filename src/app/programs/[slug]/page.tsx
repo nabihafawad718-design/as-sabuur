@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { asc, count, eq, ne } from "drizzle-orm";
@@ -9,6 +8,7 @@ import { programRsvps, programs } from "@/db/schema";
 import { PageHeader } from "@/components/ui/page-header";
 import { RsvpForm } from "@/components/programs/rsvp-form";
 import { ProgramCard } from "@/components/ui/cards";
+import { CoverArt } from "@/components/art/cover-art";
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +24,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: program.title,
     description: program.subtitle,
-    openGraph: { images: [{ url: program.image, width: 1200, height: 800, alt: program.title }] },
+    openGraph: {
+      url: `https://as-sabuur.com/programs/${program.slug}`,
+      images: [{ url: "/og/as-sabuur-og.png", width: 1200, height: 630, alt: program.title }],
+    },
   };
 }
 
@@ -57,14 +60,7 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
         <div className="grid gap-12 lg:grid-cols-[1fr_380px]">
           <div className="min-w-0">
             <div className="relative aspect-[16/9] overflow-hidden rounded-card shadow-card">
-              <Image
-                src={program.image}
-                alt={program.title}
-                fill
-                priority
-                sizes="(min-width: 1024px) 760px, 100vw"
-                className="object-cover"
-              />
+              <CoverArt seed={program.slug} className="h-full w-full" label={`Cover for ${program.title}`} />
             </div>
 
             <div className="mt-8 grid gap-4 rounded-2xl border border-ivory-200 bg-white p-6 shadow-card sm:grid-cols-2 lg:grid-cols-4">

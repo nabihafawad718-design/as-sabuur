@@ -18,10 +18,10 @@ export const programsData: ProgramInsert[] = [
     format: "Sanctuary & Live Stream",
     schedule: "Thursdays · After Maghrib (19:00 GMT)",
     duration: "4 weeks · 75 min",
-    guideName: "Shaykh Tariq Al-Mansoor",
-    guideRole: "Resident Scholar · Tafsir & Spiritual Ethics",
+    guideName: "As-Sabuur teaching team",
+    guideRole: "Academy teacher",
     capacity: 60,
-    image: "/images/sabuur-courtyard.jpg",
+    image: "",
     highlights: [
       "Verse-by-verse linguistic reflection in Arabic & English",
       "Weekly journaling prompts on unhurried presence",
@@ -48,10 +48,10 @@ export const programsData: ProgramInsert[] = [
     format: "Dawn Gathering · Live Audio",
     schedule: "Daily · 05:30 Local / Live Stream",
     duration: "Ongoing · 25 min",
-    guideName: "Ustadha Salma Al-Khatib",
-    guideRole: "Hafiza & Devotional Circle Guide",
+    guideName: "As-Sabuur teaching team",
+    guideRole: "Academy teacher",
     capacity: 150,
-    image: "/images/sabuur-dawn.jpg",
+    image: "",
     highlights: [
       "Complete morning adhkar with authentic Prophetic narrations",
       "Calm, measured Qur’anic recitation (tarteel)",
@@ -77,10 +77,10 @@ export const programsData: ProgramInsert[] = [
     format: "Sanctuary & Live Stream",
     schedule: "Sundays · 18:00 GMT",
     duration: "6 weeks · 60 min",
-    guideName: "Dr. Nadia Benali",
-    guideRole: "Historian of Prophetic Tradition",
+    guideName: "As-Sabuur teaching team",
+    guideRole: "Academy teacher",
     capacity: 80,
-    image: "/images/sabuur-manuscript.jpg",
+    image: "",
     highlights: [
       "Deep reading of Surah Yusuf’s turning points",
       "How Prophet Ya‘qub held grief and hope simultaneously",
@@ -107,10 +107,10 @@ export const programsData: ProgramInsert[] = [
     format: "In Sanctuary · Limited Seats",
     schedule: "First Friday of each Hijri month · 19:30",
     duration: "Monthly · 2.5 hours",
-    guideName: "Shaykh Tariq & Sanctuary Stewards",
-    guideRole: "Sanctuary Circle",
+    guideName: "As-Sabuur teaching team",
+    guideRole: "Academy teacher",
     capacity: 35,
-    image: "/images/sabuur-lantern.jpg",
+    image: "",
     highlights: [
       "Device-free sanctuary evening lit by brass lanterns",
       "Contemplation on one Name from Al-Asma ul-Husna",
@@ -136,10 +136,10 @@ export const programsData: ProgramInsert[] = [
     format: "Sanctuary & Interactive Zoom",
     schedule: "Alternating Saturdays · 16:00 GMT",
     duration: "8 sessions · 60 min",
-    guideName: "Ustadh Kareem Haddad",
-    guideRole: "Youth Mentor & Educator",
+    guideName: "As-Sabuur teaching team",
+    guideRole: "Academy teacher",
     capacity: 30,
-    image: "/images/sabuur-garden.jpg",
+    image: "",
     highlights: [
       "Open dialogue without lectures or embarrassment",
       "Practical habits for focus, prayer, and screen boundaries",
@@ -165,10 +165,10 @@ export const programsData: ProgramInsert[] = [
     format: "In Sanctuary Workshop",
     schedule: "Saturdays · 11:00 GMT",
     duration: "4 Saturdays · 90 min",
-    guideName: "Master Layla Darwish",
-    guideRole: "Traditional Calligrapher & Illuminator",
+    guideName: "As-Sabuur teaching team",
+    guideRole: "Academy teacher",
     capacity: 20,
-    image: "/images/sabuur-arches.jpg",
+    image: "",
     highlights: [
       "Hand-carved bamboo qalam & walnut ink provided",
       "Learn to write الصَّبُور (As-Sabuur) in Naskh & Thuluth",
@@ -193,10 +193,10 @@ export const essaysData: EssayInsert[] = [
     arabicEpigraph: "فَصَبْرٌ جَمِيلٌ ۖ وَاللَّهُ الْمُسْتَعَانُ",
     excerpt:
       "When Prophet Ya‘qub said ‘Beautiful patience’, he was not suppressing tears. He was refusing to let grief fracture his trust in Allah.",
-    author: "Shaykh Tariq Al-Mansoor",
-    authorRole: "Resident Scholar",
+    author: "As-Sabuur editorial",
+    authorRole: "Academy team",
     category: "Contemplation",
-    image: "/images/sabuur-hero.jpg",
+    image: "",
     readMinutes: 6,
     publishedAt: "2026-02-14",
     blocks: [
@@ -240,10 +240,10 @@ export const essaysData: EssayInsert[] = [
     arabicEpigraph: "أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ",
     excerpt:
       "Why classical courtyards placed water, stone, and shade at the center — and how to build a sanctuary corner inside a crowded week.",
-    author: "Ustadha Salma Al-Khatib",
-    authorRole: "Devotional Guide",
+    author: "As-Sabuur editorial",
+    authorRole: "Academy team",
     category: "Sacred Space",
-    image: "/images/sabuur-courtyard.jpg",
+    image: "",
     readMinutes: 5,
     publishedAt: "2026-01-28",
     blocks: [
@@ -282,10 +282,10 @@ export const essaysData: EssayInsert[] = [
     arabicEpigraph: "وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ",
     excerpt:
       "Reliance does not mean abandoning planning — it means loosening your grip on outcomes you were never meant to control.",
-    author: "Dr. Nadia Benali",
-    authorRole: "Historian & Essayist",
+    author: "As-Sabuur editorial",
+    authorRole: "Academy team",
     category: "Steadfastness",
-    image: "/images/sabuur-night.jpg",
+    image: "",
     readMinutes: 7,
     publishedAt: "2026-01-09",
     blocks: [
@@ -307,56 +307,15 @@ export const essaysData: EssayInsert[] = [
   },
 ];
 
-export const reflectionsData: ReflectionInsert[] = [
-  {
-    authorName: "Amina S.",
-    city: "London",
-    theme: "Dua",
-    body: "Entering my seventh month awaiting clarity on my father’s recovery. Asking everyone who reads this to whisper a dua for complete shifa and calm hearts in our home.",
-    ameenCount: 42,
-    approved: true,
-  },
-  {
-    authorName: "Yusuf K.",
-    city: "Toronto",
-    theme: "Sabr",
-    body: "Six months ago a door I prayed for closed abruptly. Tonight I look back in awe at how gently Al-Lateef rerouted my entire family into peace. Hold steady — delay is never denial.",
-    ameenCount: 68,
-    approved: true,
-  },
-  {
-    authorName: "Mariam & Bilal",
-    city: "Kuala Lumpur",
-    theme: "Shukr",
-    body: "Praying Fajr together with the dawn audio circle every morning has healed the tone of our household. Alhamdulillah for small consistent anchors.",
-    ameenCount: 31,
-    approved: true,
-  },
-  {
-    authorName: "Ibrahim H.",
-    city: "Chicago",
-    theme: "Tawakkul",
-    body: "Starting over in a new city with uncertainty ahead. Leaning wholly on HasbunAllahu wa ni‘mal-Wakeel. May Allah grant every lonely traveller quiet companionship.",
-    ameenCount: 54,
-    approved: true,
-  },
-  {
-    authorName: "Zainab R.",
-    city: "Manchester",
-    theme: "Dua",
-    body: "May Allah soften every anxious heart tonight, pay off the hidden debts of those who sit silently in sujood, and bless our mothers with long ease.",
-    ameenCount: 89,
-    approved: true,
-  },
-  {
-    authorName: "Hamza T.",
-    city: "Cape Town",
-    theme: "Sabr",
-    body: "Learning that Sabr is not waiting passively — it is refusing to stop being kind while you wait.",
-    ameenCount: 47,
-    approved: true,
-  },
-];
+/**
+ * No seeded reflections.
+ *
+ * The Dua Wall is user-generated content. Seeding it with invented prayers,
+ * names and "Ameen" counts would present fabricated community activity as
+ * real. The page renders an honest empty state until a visitor submits the
+ * first note.
+ */
+export const reflectionsData: ReflectionInsert[] = [];
 
 export const versesData: VerseInsert[] = [
   {

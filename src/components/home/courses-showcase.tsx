@@ -1,131 +1,92 @@
-"use client";
-
-import { ArrowRight, Check, Sparkles } from "lucide-react";
-import { courseTracks } from "@/data/learning";
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
+import { COURSES } from "@/data/courses";
+import { CourseArt } from "@/components/art/course-art";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { useTrialDrawer } from "@/components/trial/trial-drawer";
+import { BookTrialButton } from "@/components/trial/trial-drawer";
 
 export function CoursesShowcase() {
-  const { openTrial } = useTrialDrawer();
-
   return (
     <section id="courses" className="wrap py-20 lg:py-28">
       <Reveal>
         <SectionHeading
-          eyebrow="Structured Pathways"
-          title="Four courses crafted for lasting connection"
-          description="Every student moves at a calm, unhurried pace — whether opening Arabic for the very first time or refining fluent Tajweed."
+          eyebrow="Courses & programs"
+          title="Five courses, one steady method"
+          description="Every course is taught one-to-one and paced to the student. Most learners begin with Qaida or reading; the rest are chosen once the teacher has heard them read."
           action={
-            <button type="button" onClick={() => openTrial()} className="btn btn-primary hidden sm:inline-flex">
-              Book Free Assessment
-              <ArrowRight className="h-4 w-4" />
-            </button>
+            <Link href="/courses" className="btn btn-outline hidden sm:inline-flex">
+              Compare all courses <ArrowRight className="h-4 w-4" />
+            </Link>
           }
         />
       </Reveal>
 
-      <div className="mt-12 grid gap-6 md:grid-cols-2">
-        {courseTracks.map((track, idx) => {
-          const isDark = track.accent === "gold";
+      <div className="mt-12 grid gap-5 md:grid-cols-6">
+        {COURSES.map((course, idx) => {
+          const large = idx < 2;
           return (
-            <Reveal key={track.id} delay={idx * 90}>
-              <article
-                className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-[1.6rem] border p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift ${
-                  isDark
-                    ? "border-gold-400/50 bg-pine-900 text-ivory-50"
-                    : track.accent === "sage"
-                      ? "border-sage-200 bg-sage-50/75 text-pine-950"
-                      : "border-ivory-200 bg-white text-pine-950 shadow-card"
-                }`}
-              >
-                {/* Gently rotating subtle geometric corner motif */}
-                <svg
-                  viewBox="0 0 120 120"
-                  className={`pointer-events-none -right-8 -top-8 absolute h-36 w-36 transition-transform duration-700 group-hover:rotate-45 ${
-                    isDark ? "text-gold-300/15" : "text-pine-700/[0.06]"
-                  }`}
-                  aria-hidden="true"
-                >
-                  <rect x="25" y="25" width="70" height="70" fill="none" stroke="currentColor" strokeWidth="1.5" />
-                  <rect
-                    x="25"
-                    y="25"
-                    width="70"
-                    height="70"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    transform="rotate(45 60 60)"
+            <Reveal
+              key={course.id}
+              delay={idx * 70}
+              className={large ? "md:col-span-3" : "md:col-span-2"}
+            >
+              <article className="group flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-ivory-200 bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-lift">
+                <div className={`relative overflow-hidden ${large ? "aspect-[16/9]" : "aspect-[16/10]"}`}>
+                  <CourseArt
+                    variant={course.art}
+                    className="h-full w-full"
+                    label={`Illustrated plate for the ${course.name} course`}
                   />
-                </svg>
-
-                <div className="relative">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span
-                      className={`rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider ${
-                        isDark ? "bg-gold-400/20 text-gold-300" : "bg-ivory-100 text-pine-800"
-                      }`}
-                    >
-                      {track.audience} · {track.duration}
-                    </span>
-                    <span
-                      lang="ar"
-                      dir="rtl"
-                      className={`font-arabic text-2xl ${isDark ? "text-gold-300" : "text-gold-700"}`}
-                    >
-                      {track.arabicTitle}
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-gold-700">
+                        {course.level}
+                      </p>
+                      <h3 className={`mt-1.5 leading-tight ${large ? "text-3xl" : "text-2xl"}`}>{course.name}</h3>
+                    </div>
+                    <span lang="ar" dir="rtl" className="font-arabic shrink-0 text-xl text-pine-700/80">
+                      {course.arabic}
                     </span>
                   </div>
+                  <p className="mt-3 text-sm leading-relaxed text-stone-600">{course.tagline}</p>
 
-                  <h3 className={`mt-5 text-3xl sm:text-4xl ${isDark ? "text-ivory-50" : ""}`}>{track.title}</h3>
-                  <p className={`mt-3 text-sm leading-relaxed ${isDark ? "text-ivory-100/80" : "text-stone-600"}`}>
-                    {track.tagline}
-                  </p>
-
-                  <ul className="mt-6 space-y-2.5">
-                    {track.outcomes.map((o) => (
-                      <li
-                        key={o}
-                        className={`flex items-start gap-2.5 text-sm ${
-                          isDark ? "text-ivory-100/90" : "text-stone-700"
-                        }`}
-                      >
-                        <span
-                          className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full ${
-                            isDark ? "bg-gold-400 text-pine-950" : "bg-pine-100 text-pine-800"
-                          }`}
-                        >
-                          <Check className="h-3 w-3" strokeWidth={3} />
-                        </span>
+                  <ul className="mt-4 space-y-1.5">
+                    {course.outcomes.slice(0, large ? 3 : 2).map((o) => (
+                      <li key={o} className="flex items-start gap-2 text-[13px] text-stone-700">
+                        <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-pine-600" strokeWidth={3} />
                         {o}
                       </li>
                     ))}
                   </ul>
-                </div>
 
-                <div
-                  className={`relative mt-8 flex items-center justify-between gap-4 border-t pt-6 ${
-                    isDark ? "border-white/10" : "border-ivory-200"
-                  }`}
-                >
-                  <span className={`text-xs font-medium ${isDark ? "text-gold-200" : "text-stone-500"}`}>
-                    1-on-1 Live · Free 30-min trial included
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => openTrial({ goal: track.goalValue })}
-                    className={`btn !px-5 !py-2.5 !text-sm ${isDark ? "btn-gold" : "btn-primary"}`}
-                  >
-                    <Sparkles className="h-3.5 w-3.5" />
-                    Try This Course
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </button>
+                  <div className="mt-auto flex items-center justify-between gap-3 pt-5">
+                    <Link
+                      href={`/courses#${course.slug}`}
+                      className="inline-flex items-center gap-1 text-sm font-semibold text-pine-800 hover:text-pine-950"
+                    >
+                      Course details <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                    <BookTrialButton
+                      className="text-xs font-semibold text-gold-700 underline decoration-gold-400/50 underline-offset-4 hover:text-gold-800"
+                      goal={course.name}
+                    >
+                      Try it free
+                    </BookTrialButton>
+                  </div>
                 </div>
               </article>
             </Reveal>
           );
         })}
+      </div>
+
+      <div className="mt-8 sm:hidden">
+        <Link href="/courses" className="btn btn-outline w-full">
+          Compare all courses <ArrowRight className="h-4 w-4" />
+        </Link>
       </div>
     </section>
   );

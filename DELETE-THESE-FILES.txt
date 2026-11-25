@@ -1,0 +1,45 @@
+AS-SABUUR — FILES TO DELETE AFTER EXTRACTING THE CHANGE ZIP
+
+A ZIP cannot delete files. These 18 files exist in your repository but are not
+part of the new implementation. Delete them from the root of the project.
+If you leave them, `npm run build` will fail (trust-warmth.tsx imports a
+removed export; the wp-theme routes import a removed library).
+
+Paths are relative to the project root.
+
+--- blank image placeholders (they were solid green rectangles, not photos) ---
+public/images/learn-adult-quran.jpg
+public/images/learn-adult-tajweed.jpg
+public/images/learn-kid-laptop.jpg
+public/images/learn-kid-tablet.jpg
+public/images/sabuur-hero.jpg
+
+--- duplicate copies of the same blank images ---
+assets/images/learn-adult-quran.jpg
+assets/images/learn-adult-tajweed.jpg
+assets/images/learn-kid-laptop.jpg
+assets/images/learn-kid-tablet.jpg
+assets/images/sabuur-hero.jpg
+
+--- WordPress/static packager (generated a divergent duplicate site) ---
+src/lib/wp-packager.ts
+src/app/api/wp-theme/route.ts
+src/app/api/wp-theme/wrap/route.ts
+src/components/wp/wp-packager-client.tsx
+
+--- fabricated testimonials component (replaced by testimonials-section.tsx) ---
+src/components/home/trust-warmth.tsx
+
+--- leftover static prototype with the same unverified claims ---
+index.html
+style.css
+
+--- duplicate Drizzle config with a hard-coded local database URL ---
+drizzle.config.json
+
+
+AFTER DELETING
+Run: npm install && npm run typecheck && npm run build
+
+If `assets/` is now empty, remove the empty folder too.
+If `src/components/wp/` and `src/app/api/wp-theme/` are now empty, remove them.

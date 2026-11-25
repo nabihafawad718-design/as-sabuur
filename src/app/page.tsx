@@ -1,121 +1,97 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { asc, desc, eq } from "drizzle-orm";
-import { ArrowRight } from "lucide-react";
+import { BookOpen, Moon, PenLine, Sparkles } from "lucide-react";
 import { db } from "@/db";
-import { essays, programs, reflections, verses } from "@/db/schema";
+import { verses } from "@/db/schema";
 import { Hero } from "@/components/home/hero";
 import { LearningExperienceShowcase } from "@/components/home/learning-experience";
 import { CoursesShowcase } from "@/components/home/courses-showcase";
-import { TrustAndWarmthSection } from "@/components/home/trust-warmth";
+import { TeachingPillars } from "@/components/home/pillars";
+import { StoryBand } from "@/components/home/story-band";
+import { PricingPreview } from "@/components/home/pricing-preview";
+import { TestimonialsSection } from "@/components/home/testimonials-section";
+import { FaqBlock } from "@/components/home/faq-block";
 import { CtaBand, VerseBand } from "@/components/home/sections";
-import { EssayCard, ProgramCard, ReflectionCard } from "@/components/ui/cards";
-import { Reveal } from "@/components/ui/reveal";
-import { Ornament, SectionHeading } from "@/components/ui/section-heading";
+import { HOME_FAQS } from "@/data/faq";
+import { SITE } from "@/data/site";
 import { dayOfYear } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
-export default async function HomePage() {
-  const [programRows, essayRows, reflectionRows, verseRows] = await Promise.all([
-    db.select().from(programs).where(eq(programs.featured, true)).orderBy(asc(programs.sortOrder)).limit(3),
-    db.select().from(essays).orderBy(desc(essays.publishedAt)).limit(3),
-    db.select().from(reflections).where(eq(reflections.approved, true)).orderBy(desc(reflections.ameenCount)).limit(3),
-    db.select().from(verses),
-  ]);
+export const metadata: Metadata = {
+  title: "Online Quran Classes for Kids & Adults",
+  description:
+    "One-to-one online Quran classes from an established Quran teaching academy. Noorani Qaida, reading, Tajweed, Hifz and Quranic Arabic. Free 30-minute trial, no card details.",
+  alternates: { canonical: "/" },
+};
 
-  const verse = verseRows.length ? verseRows[dayOfYear() % verseRows.length] : null;
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: HOME_FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
+
+async function getVerse() {
+  try {
+    const rows = await db.select().from(verses);
+    return rows.length ? rows[dayOfYear() % rows.length] : null;
+  } catch {
+    // The homepage should still render if the database is unavailable.
+    return null;
+  }
+}
+
+export default async function HomePage() {
+  const verse = await getVerse();
 
   return (
     <>
-      {/* 1. Luminous Hero with Kinetic Text, Floating Global Learning Cards & Bold Trial CTA */}
       <Hero />
-
-      {/* 2. Interactive "Feel the Learning Experience" (Kids vs Adults + Live Tajweed Pronunciation Cards) */}
       <LearningExperienceShowcase />
-
-      {/* 3. Motion-Driven Signature Quran Course Cards */}
       <CoursesShowcase />
-
-      {/* Daily Ayah Anchor */}
       <VerseBand verse={verse} />
+      <TeachingPillars />
+      <StoryBand />
+      <PricingPreview />
+      <TestimonialsSection />
+      <FaqBlock items={HOME_FAQS} />
 
-      {/* 4. Global Trust & Human Warmth + Genuine Stories */}
-      <TrustAndWarmthSection />
-
-      {/* Live Community Circles & Journal */}
-      <section className="wrap py-20 lg:py-28">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Community Gatherings"
-            title="Complimentary live circles open to every household"
-            description="Beyond 1-on-1 lessons, step into our global dawn dhikr, Tafsir circles, and Prophetic patience evenings."
-            action={
-              <Link href="/programs" className="btn btn-outline hidden sm:inline-flex">
-                All gatherings <ArrowRight className="h-4 w-4" />
-              </Link>
-            }
-          />
-        </Reveal>
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {programRows.map((program, i) => (
-            <Reveal key={program.id} delay={i * 90}>
-              <ProgramCard program={program} />
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <section className="relative border-y border-ivory-200 bg-sage-50/50">
-        <div className="wrap py-20 lg:py-24">
-          <Reveal>
-            <SectionHeading
-              align="center"
-              eyebrow="Wall of Steadfastness"
-              title="Say Ameen for a brother or sister today"
-              description="Our global community shares prayers, milestones, and gratitude notes across every continent."
-            />
-          </Reveal>
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {reflectionRows.map((item, i) => (
-              <Reveal key={item.id} delay={i * 90}>
-                <ReflectionCard item={item} />
-              </Reveal>
-            ))}
-          </div>
-          <div className="mt-10 flex flex-col items-center">
-            <Link href="/reflections" className="btn btn-outline">
-              Visit the Dua Wall
-              <ArrowRight className="h-4 w-4" />
+      {/* Community: preserved routes, kept out of the main conversion path */}
+      <section className="border-y border-ivory-200 bg-ivory-100/50">
+        <div className="wrap grid gap-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { href: "/programs", icon: Sparkles, title: "Free gatherings", text: "Study circles and community evenings" },
+            { href: "/names", icon: Moon, title: "The 99 Names", text: "Contemplate Al-Asma ul-Husna" },
+            { href: "/dhikr", icon: BookOpen, title: "Dhikr & Tasbih", text: "A quiet daily remembrance counter" },
+            { href: "/journal", icon: PenLine, title: "The Journal", text: "Essays on patience and learning" },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="group flex items-start gap-3 rounded-2xl border border-ivory-200 bg-white/70 p-4 transition hover:border-sage-300 hover:bg-white"
+            >
+              <item.icon className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" />
+              <span>
+                <span className="block text-sm font-semibold text-pine-950 group-hover:text-pine-800">{item.title}</span>
+                <span className="mt-0.5 block text-xs text-stone-500">{item.text}</span>
+              </span>
             </Link>
-            <Ornament className="mt-8 text-gold-600" />
-          </div>
-        </div>
-      </section>
-
-      <section className="wrap py-20 lg:py-24">
-        <Reveal>
-          <SectionHeading
-            eyebrow="The Sabuur Journal"
-            title="Essays for quiet mornings"
-            description="Reflections from our resident teachers on Sabrun Jameel, stillness, and Prophetic poise."
-            action={
-              <Link href="/journal" className="btn btn-outline hidden sm:inline-flex">
-                Read the journal <ArrowRight className="h-4 w-4" />
-              </Link>
-            }
-          />
-        </Reveal>
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {essayRows.map((essay, i) => (
-            <Reveal key={essay.id} delay={i * 90}>
-              <EssayCard essay={essay} />
-            </Reveal>
           ))}
         </div>
       </section>
 
-      {/* 5. Closing Luminous Free Trial Invitation */}
       <CtaBand />
+
+      <p className="sr-only">
+        As-Sabuur is an established Quran teaching academy offering online Quran classes for children and adults,
+        including Noorani Qaida, Quran reading, Tajweed, Hifz and Quranic Arabic. Contact {SITE.email}.
+      </p>
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     </>
   );
 }

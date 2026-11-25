@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { desc } from "drizzle-orm";
 import { db } from "@/db";
 import { essays } from "@/db/schema";
 import { EssayCard } from "@/components/ui/cards";
+import { CoverArt } from "@/components/art/cover-art";
 import { PageHeader } from "@/components/ui/page-header";
 import { CtaBand } from "@/components/home/sections";
 
@@ -13,6 +13,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "The Sabuur Journal",
   description: "Essays and contemplative reflections on Sabrun Jameel, inner stillness, sacred architecture, and tawakkul.",
+  alternates: { canonical: "/journal" },
 };
 
 export default async function JournalPage() {
@@ -35,13 +36,10 @@ export default async function JournalPage() {
               href={`/journal/${lead.slug}`}
               className="group relative block aspect-[16/10] overflow-hidden rounded-[2rem] shadow-card"
             >
-              <Image
-                src={lead.image}
-                alt={lead.title}
-                fill
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover transition duration-700 group-hover:scale-105"
+              <CoverArt
+                seed={lead.slug}
+                className="relative h-full w-full transition duration-700 group-hover:scale-[1.03]"
+                label={`Cover for ${lead.title}`}
               />
             </Link>
             <div>

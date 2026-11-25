@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { desc, eq, ne } from "drizzle-orm";
@@ -7,6 +6,7 @@ import { ArrowLeft, Clock3 } from "lucide-react";
 import { db } from "@/db";
 import { essays, type EssayBlock } from "@/db/schema";
 import { EssayCard } from "@/components/ui/cards";
+import { CoverArt } from "@/components/art/cover-art";
 import { CtaBand } from "@/components/home/sections";
 import { formatDate } from "@/lib/format";
 
@@ -24,7 +24,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: essay.title,
     description: essay.excerpt,
-    openGraph: { type: "article", images: [{ url: essay.image, width: 1200, height: 800, alt: essay.title }] },
+    openGraph: {
+      type: "article",
+      url: `https://as-sabuur.com/journal/${essay.slug}`,
+      images: [{ url: "/og/as-sabuur-og.png", width: 1200, height: 630, alt: essay.title }],
+    },
   };
 }
 
@@ -86,7 +90,7 @@ export default async function EssayPage({ params }: { params: Promise<{ slug: st
         </div>
 
         <div className="relative mx-auto mt-10 aspect-[16/8] max-w-5xl overflow-hidden rounded-[2rem] shadow-card">
-          <Image src={essay.image} alt={essay.title} fill priority sizes="(min-width: 1024px) 1024px, 100vw" className="object-cover" />
+          <CoverArt seed={essay.slug} className="h-full w-full" label={`Cover for ${essay.title}`} />
         </div>
 
         <div className="mx-auto mt-10 max-w-3xl">

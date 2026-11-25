@@ -9,8 +9,10 @@ import { CtaBand } from "@/components/home/sections";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Sacred Gatherings & Study Circles",
-  description: "Reserve your seat for Tafsir circles, daily dawn adhkar, Prophetic patience lectures, and calligraphy workshops at As-Sabuur.",
+  title: "Gatherings & Study Circles",
+  description:
+    "Study circles and community evenings at As-Sabuur. Read the syllabus for each gathering and reserve a seat; we confirm the details by email.",
+  alternates: { canonical: "/programs" },
 };
 
 export default async function ProgramsPage() {
@@ -21,7 +23,7 @@ export default async function ProgramsPage() {
       <PageHeader
         eyebrow="Gatherings · الْمَجَالِس"
         title="Circles of remembrance, scripture, and stillness"
-        description="Every gathering is offered freely in the courtyard and live online. Choose a circle below to read the syllabus and reserve your seat."
+        description="Choose a circle below to read its syllabus and reserve a seat. Each listing shows the schedule, format and who is teaching; we confirm the details with you by email before the first session."
         crumbs={[["Gatherings", "/programs"]]}
       />
       <section className="wrap py-14 lg:py-20">
