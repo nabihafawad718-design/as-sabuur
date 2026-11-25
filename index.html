@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>As-Sabuur · Online Quran Learning for Kids &amp; Adults</title>
+  <meta name="description" content="1-on-1 online Quran classes with Tajweed, Hifz, translation and tafseer. Free 30-minute trial. Male and female teachers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <div><span style="font-family:var(--font-arabic);color:var(--gold-300);font-size:15px;" lang="ar" dir="rtl">ٱلصَّبُور</span> · Global 1-on-1 Online Quran Learning for Kids &amp; Adults Worldwide</div>
+      <div>Free 30-Min Trial · Male &amp; Female Certified Tutors</div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="wrap header-inner">
+      <a href="#top" class="brand">
+        <svg width="38" height="38" viewBox="0 0 44 44" aria-hidden="true">
+          <rect x="10" y="10" width="24" height="24" fill="none" stroke="#d4b054" stroke-width="1.4" transform="rotate(45 22 22)"/>
+          <rect x="10" y="10" width="24" height="24" fill="#0b3024" stroke="#e3c87b" stroke-width="1.4"/>
+          <circle cx="22" cy="22" r="2.6" fill="#e3c87b"/>
+        </svg>
+        <div>
+          <span class="brand-name">As-Sabuur<span>.com</span></span>
+          <span class="brand-ar" lang="ar" dir="rtl">تَعَلُّمُ الْقُرْآنِ بِسَكِينَة</span>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="#experience">Experience</a>
+        <a href="#courses">Courses</a>
+        <a href="#classes">Class Details</a>
+        <a href="#contact">Contact</a>
+        <a href="#trust">Global Trust</a>
+      </nav>
+      <button type="button" class="btn btn-primary" onclick="openTrialModal()">Book Free Trial</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <svg viewBox="0 0 400 400" class="motif-spin" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="85" y="85" width="230" height="230"/>
+          <rect x="85" y="85" width="230" height="230" transform="rotate(45 200 200)"/>
+          <circle cx="200" cy="200" r="165" stroke-dasharray="6 8"/>
+        </g>
+      </svg>
+      <div class="wrap hero-grid">
+        <div>
+          <span class="pill-badge"><span style="font-family:var(--font-arabic);font-size:16px;" lang="ar" dir="rtl">ٱلصَّبُورُ</span> Global 1-on-1 Online Quran Sanctuary</span>
+          <h1>Learn the Qur’an with <em>patient</em> hearts, from anywhere on earth.</h1>
+          <p class="hero-copy">Named after <strong>As-Sabuur</strong> — <em>The Most Patient &amp; Steadfast</em> — our sanctuary pairs children and adults worldwide with certified, deeply caring 1-on-1 teachers in Qaida, Tajweed, Hifz, and Quranic Arabic.</p>
+          <div class="hero-actions">
+            <button type="button" class="btn btn-gold" onclick="openTrialModal()">Book a Free Trial Class →</button>
+            <a href="#experience" class="btn btn-outline">Feel the Learning Experience</a>
+          </div>
+          <div class="hero-meta">
+            <span>✓ Free 30-min trial · No card needed</span>
+            <span>✓ Male &amp; female certified tutors</span>
+            <span>✓ 35+ countries · All time zones</span>
+          </div>
+        </div>
+
+        <div class="hero-stage">
+          <div class="arch-card">
+            <img src="assets/images/learn-kid-laptop.jpg" alt="Child smiling during a 1-on-1 online Quran session"/>
+            <div class="arch-overlay">
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-300);">● 1-on-1 Kids Session · London 16:30</div>
+              <div style="font-family:var(--font-display);font-size:21px;margin-top:4px;">“Look Mama, I read the whole line myself!”</div>
+            </div>
+          </div>
+          <div class="float-card left">
+            <img src="assets/images/learn-adult-tajweed.jpg" alt="Adult practicing Tajweed peacefully" style="width:58px;height:58px;border-radius:12px;object-fit:cover;"/>
+            <div>
+              <div style="font-size:10px;font-weight:700;color:var(--pine-700);text-transform:uppercase;">Adults · Calm Pace</div>
+              <div style="font-size:13px;font-weight:700;color:var(--pine-950);">Tajweed &amp; Tarteel</div>
+              <div style="font-size:11px;color:var(--stone-600);">Toronto · Private 1-on-1</div>
+            </div>
+          </div>
+          <div class="float-card right" style="display:block;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-300);">Live Time-Zone Harmony</div>
+            <div id="tz-city" style="font-family:var(--font-display);font-size:24px;margin-top:4px;">London · 16:30 GMT</div>
+            <div id="tz-note" style="font-size:12px;opacity:0.78;">After-School Qaida · Age 7</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section section-sage">
+      <div class="wrap">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;">
+          <div>
+            <span class="eyebrow">Feel the Learning Experience</span>
+            <h2 class="section-title">Designed around how <em>you</em> feel inside the lesson</h2>
+          </div>
+          <div class="tabs" role="tablist">
+            <button type="button" class="tab-btn active" id="tab-kids" onclick="switchMode('kids')">Kids (5–14)</button>
+            <button type="button" class="tab-btn" id="tab-adults" onclick="switchMode('adults')">Adults &amp; Reverts</button>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div>
+            <span id="exp-badge" style="display:inline-block;background:var(--gold-100);color:var(--gold-600);padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;">Playful · Visual · Confidence-First</span>
+            <h3 id="exp-title" style="font-size:34px;margin-top:16px;">Lessons children genuinely ask for when the clock hits 5pm.</h3>
+            <p id="exp-copy" style="margin-top:12px;color:var(--stone-600);">Warm, patient teachers turn Arabic letters and short surahs into joyful 30-minute milestones — with visual stars and gentle encouragement.</p>
+            <div id="exp-milestones" style="margin-top:20px;"></div>
+            <button type="button" class="btn btn-primary" style="margin-top:22px;" onclick="openTrialModal()">Try a Free Class →</button>
+          </div>
+          <div>
+            <img id="exp-img" src="assets/images/learn-kid-tablet.jpg" alt="Learning experience" style="width:100%;aspect-ratio:16/11;object-fit:cover;border-radius:20px;"/>
+          </div>
+        </div>
+
+        <div style="margin-top:54px;">
+          <span class="eyebrow">Interactive Tajweed Soundboard</span>
+          <h3 style="font-size:32px;margin-top:10px;">Click a rule to hear cadence &amp; see phonetics</h3>
+          <div class="sound-grid" id="sound-grid"></div>
+          <div id="sound-detail" style="margin-top:16px;background:#fff;border:1px solid var(--ivory-200);border-radius:18px;padding:20px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="courses" class="section">
+      <div class="wrap">
+        <span class="eyebrow">Structured Pathways</span>
+        <h2 class="section-title">Four courses crafted for lasting connection</h2>
+        <div class="courses-grid">
+          <article class="course-card">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--pine-700);text-transform:uppercase;">Kids 5+ &amp; Adult Beginners · 2–4 Months</div>
+              <h3 style="font-size:30px;margin-top:12px;">Noorani Qaida &amp; Foundational Reading</h3>
+              <p style="margin-top:10px;font-size:14px;color:var(--stone-600);">From recognizing your very first Arabic letter to reading short surahs fluently from the Mushaf.</p>
+            </div>
+            <button type="button" class="btn btn-primary" style="margin-top:24px;align-self:flex-start;" onclick="openTrialModal('Noorani Qaida & Foundational Reading')">Try This Course →</button>
+          </article>
+          <article class="course-card dark">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--gold-300);text-transform:uppercase;">Kids 8+ &amp; Adults · 4–9 Months</div>
+              <h3 style="font-size:30px;margin-top:12px;">Tajweed &amp; Fluent Recitation</h3>
+              <p style="margin-top:10px;font-size:14px;color:rgba(252,250,244,0.78);">Recite with beauty, precision, and unhurried Tarteel under Ijazah-certified teachers.</p>
+            </div>
+            <button type="button" class="btn btn-gold" style="margin-top:24px;align-self:flex-start;" onclick="openTrialModal('Tajweed & Fluent Recitation')">Try This Course →</button>
+          </article>
+          <article class="course-card sage">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--pine-700);text-transform:uppercase;">Selected Surahs to Full Qur’an · Flexible</div>
+              <h3 style="font-size:30px;margin-top:12px;">Hifz / Memorization</h3>
+              <p style="margin-top:10px;font-size:14px;color:var(--stone-600);">Retention-first memorization combining Sabaq, Sabqi, and Manzil so what you learn stays for life.</p>
+            </div>
+            <button type="button" class="btn btn-primary" style="margin-top:24px;align-self:flex-start;" onclick="openTrialModal('Hifz / Memorization')">Try This Course →</button>
+          </article>
+          <article class="course-card">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--pine-700);text-transform:uppercase;">Teens &amp; Adults · 6–9 Months</div>
+              <h3 style="font-size:30px;margin-top:12px;">Quranic Arabic &amp; Meaning</h3>
+              <p style="margin-top:10px;font-size:14px;color:var(--stone-600);">Unlock the 500 highest-frequency Qur’anic words and root patterns so your salah feels personal.</p>
+            </div>
+            <button type="button" class="btn btn-primary" style="margin-top:24px;align-self:flex-start;" onclick="openTrialModal('Quranic Arabic & Meaning')">Try This Course →</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="classes" class="section">
+      <div class="wrap">
+        <span class="eyebrow">Class Details</span>
+        <h2 class="section-title">Simple schedule, <em>flexible</em> way to learn</h2>
+        <div class="courses-grid">
+          <article class="course-card sage">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--pine-700);text-transform:uppercase;">Understand the Qur’an</div>
+              <h3 style="font-size:30px;margin-top:12px;">Translation of Qur’an with Tafseer</h3>
+              <p style="margin-top:10px;font-size:14px;color:var(--stone-600);">Read the meaning of every verse, with clear tafseer, so the Qur’an speaks to your heart.</p>
+            </div>
+          </article>
+          <article class="course-card">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--pine-700);text-transform:uppercase;">Every Friday</div>
+              <h3 style="font-size:30px;margin-top:12px;">Friday Tarbiyat Class</h3>
+              <p style="margin-top:10px;font-size:14px;color:var(--stone-600);">A special weekly class for character building and Islamic manners (tarbiyat).</p>
+            </div>
+          </article>
+          <article class="course-card dark">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--gold-300);text-transform:uppercase;">Weekly Schedule</div>
+              <h3 style="font-size:30px;margin-top:12px;">5 Days a Week · Weekend Off</h3>
+              <p style="margin-top:10px;font-size:14px;color:rgba(252,250,244,0.78);">Classes run 5 days a week. Saturday and Sunday are off for rest and family time.</p>
+            </div>
+          </article>
+          <article class="course-card">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--pine-700);text-transform:uppercase;">Learn From Home</div>
+              <h3 style="font-size:30px;margin-top:12px;">Online on Zoom, Skype, WhatsApp &amp; IMO</h3>
+              <p style="margin-top:10px;font-size:14px;color:var(--stone-600);">Pick the app that is easiest for you. Live 1-on-1 classes from any country.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-sage">
+      <div class="wrap" style="text-align:center;">
+        <span class="eyebrow">Contact</span>
+        <h2 class="section-title">Talk to us anytime</h2>
+        <p style="max-width:620px;margin:14px auto 0;color:var(--stone-600);">Message us on WhatsApp, IMO or call. We will reply as soon as we can.</p>
+        <p style="margin-top:18px;font-size:22px;font-weight:700;color:var(--pine-900);" id="contact-number"></p>
+        <div style="margin-top:22px;">
+          <a id="wa-link" class="btn btn-gold" href="#" target="_blank" rel="noopener">Chat on WhatsApp →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="trust" class="section section-sage">
+      <div class="wrap" style="text-align:center;">
+        <span class="eyebrow">Global Trust &amp; Human Warmth</span>
+        <h2 class="section-title">Patient certified teachers across every time zone</h2>
+        <p style="max-width:620px;margin:14px auto 0;color:var(--stone-600);">1-on-1 live classrooms, monthly parent progress summaries, and zero-pressure learning for families in London, Toronto, Houston, Dubai &amp; Sydney.</p>
+        <div style="margin-top:30px;">
+          <button type="button" class="btn btn-gold" onclick="openTrialModal()">Book Your Free 30-Min Trial Class →</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <div><strong style="color:var(--ivory-50);font-family:var(--font-display);font-size:22px;">As-Sabuur.com</strong> · Online Quran Learning Sanctuary</div>
+      <div><span class="contact-inline"></span> · salam@as-sabuur.com · © 2026 As-Sabuur</div>
+    </div>
+  </footer>
+
+  <!-- Free Trial Drawer -->
+  <div class="modal-backdrop" id="trial-modal" onclick="if(event.target===this) closeTrialModal()">
+    <div class="drawer" role="dialog" aria-modal="true" aria-label="Book a Free Trial Class">
+      <div class="drawer-head">
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-300);">Free 1-on-1 Trial Class</div>
+          <h2 style="margin-top:8px;">Begin with a gentle conversation</h2>
+          <p style="margin:6px 0 0;font-size:13px;opacity:0.78;">30-minute live session · No card required</p>
+        </div>
+        <button type="button" onclick="closeTrialModal()" style="background:rgba(255,255,255,0.12);color:#fff;border:0;width:36px;height:36px;border-radius:99px;font-size:18px;" aria-label="Close">×</button>
+      </div>
+      <div class="drawer-body">
+        <form id="trial-form" onsubmit="return submitTrialForm(event)">
+          <div class="field">
+            <label for="f-name">Name *</label>
+            <input id="f-name" name="fullName" required placeholder="Parent or student's full name"/>
+          </div>
+          <div class="field">
+            <label for="f-age">Age Group *</label>
+            <select id="f-age" name="ageGroup">
+              <option value="Kid">Kid (Ages 5–14)</option>
+              <option value="Adult">Adult / Revert (15+)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-goal">Preferred Learning Goal *</label>
+            <select id="f-goal" name="learningGoal">
+              <option value="Noorani Qaida & Foundational Reading">Noorani Qaida &amp; Foundational Reading</option>
+              <option value="Tajweed & Fluent Recitation">Tajweed &amp; Fluent Recitation</option>
+              <option value="Hifz / Memorization">Hifz / Memorization</option>
+              <option value="Quranic Arabic & Meaning">Quranic Arabic &amp; Meaning</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-tz">Time Zone *</label>
+            <input id="f-tz" name="timezone" required placeholder="e.g. London GMT, New York EST"/>
+          </div>
+          <div class="field">
+            <label for="f-contact">WhatsApp or Email *</label>
+            <input id="f-contact" name="contact" required placeholder="+44 7700… or you@email.com"/>
+          </div>
+          <button type="submit" class="btn btn-gold" style="width:100%;padding:15px;">Confirm Free Trial Class</button>
+        </form>
+        <div id="trial-success" style="display:none;text-align:center;padding:24px 0;">
+          <h3 style="font-size:28px;">JazakAllahu Khayran!</h3>
+          <p id="trial-success-msg" style="font-size:14px;color:var(--stone-600);margin-top:10px;"></p>
+          <button type="button" class="btn btn-primary" style="margin-top:18px;" onclick="closeTrialModal()">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const zones = [
+      { city: "London · 16:30 GMT", note: "After-School Qaida · Age 7" },
+      { city: "New York · 11:30 EST", note: "Adult Tajweed Break" },
+      { city: "Dubai · 20:30 GST", note: "Evening Hifz Revision" },
+      { city: "Sydney · 05:30 AET", note: "Dawn Recitation & Meaning" }
+    ];
+    let zi = 0;
+    setInterval(() => {
+      zi = (zi + 1) % zones.length;
+      document.getElementById("tz-city").textContent = zones[zi].city;
+      document.getElementById("tz-note").textContent = zones[zi].note;
+    }, 3400);
+
+    const modes = {
+      kids: {
+        badge: "Playful · Visual · Confidence-First",
+        title: "Lessons children genuinely ask for when the clock hits 5pm.",
+        copy: "Warm, patient teachers turn Arabic letters and short surahs into joyful 30-minute milestones — with visual stars and gentle encouragement.",
+        img: "assets/images/learn-kid-tablet.jpg",
+        milestones: [
+          ["Step 1 · Letter Friends", "Week 1–4"],
+          ["Step 2 · Joining & Vowels", "Month 2"],
+          ["Step 3 · First Surahs", "Month 3–4"]
+        ]
+      },
+      adults: {
+        badge: "Calm · Structured · Judgment-Free",
+        title: "Start from letter one or refine every Tajweed rule — with quiet dignity.",
+        copy: "Whether returning after years or learning as a revert, certified scholars adapt calmly to your work and family rhythm.",
+        img: "assets/images/learn-adult-quran.jpg",
+        milestones: [
+          ["Phase 1 · Private Diagnostic", "Trial Day 1"],
+          ["Phase 2 · Makharij & Rules", "Months 1–3"],
+          ["Phase 3 · Fluent Tarteel", "Ongoing"]
+        ]
+      }
+    };
+
+    function switchMode(m) {
+      document.getElementById("tab-kids").classList.toggle("active", m === "kids");
+      document.getElementById("tab-adults").classList.toggle("active", m === "adults");
+      const d = modes[m];
+      document.getElementById("exp-badge").textContent = d.badge;
+      document.getElementById("exp-title").textContent = d.title;
+      document.getElementById("exp-copy").textContent = d.copy;
+      document.getElementById("exp-img").src = d.img;
+      document.getElementById("exp-milestones").innerHTML = d.milestones.map(x =>
+        '<div class="milestone"><strong>' + x[0] + '</strong><span style="font-size:12px;color:var(--pine-700);font-weight:600;">' + x[1] + '</span></div>'
+      ).join("");
+    }
+    switchMode("kids");
+
+    const rules = [
+      { id: "qalqalah", ref: "Al-Ikhlas 112:1", ar: "قُلْ هُوَ اللَّهُ أَحَدٌ", title: "Qalqalah (Echo)", tip: "Release final Dal cleanly with a gentle echoing bounce — never add an extra vowel.", freqs: [293.66, 329.63, 392, 440] },
+      { id: "ghunnah", ref: "Ash-Sharh 94:6", ar: "إِنَّ مَعَ الْعُسْرِ يُسْرًا", title: "Ghunnah (Nasal 2-Beat)", tip: "Hold the doubled Noon warmly through the nasal passage for two calm heartbeats.", freqs: [261.63, 329.63, 392, 349.23] },
+      { id: "madd", ref: "At-Tariq 86:1", ar: "وَالسَّمَاءِ وَالطَّارِقِ", title: "Madd Waajib (4–5 Beats)", tip: "Keep breath steady across the elongated Alif before meeting the Hamzah.", freqs: [293.66, 349.23, 440, 523.25] },
+      { id: "tafkheem", ref: "Al-Ma‘arij 70:5", ar: "وَاصْبِرْ صَبْرًا جَمِيلًا", title: "Tafkheem (Full-Mouth)", tip: "Elevate the back tongue gently on Saad for warm, resonant gravity.", freqs: [246.94, 293.66, 369.99, 440] }
+    ];
+    let activeRule = "qalqalah";
+    let playingRule = null;
+    function renderSoundboard() {
+      const grid = document.getElementById("sound-grid");
+      grid.innerHTML = rules.map(r => {
+        const cls = ["sound-card", r.id === activeRule ? "active" : "", r.id === playingRule ? "playing" : ""].join(" ");
+        const bars = [40,85,60,100,50,90,45,80,55,75].map((h,i) =>
+          '<span class="wave-bar" style="height:'+h+'%;animation-delay:'+(i*65)+'ms"></span>'
+        ).join("");
+        return '<button type="button" class="'+cls+'" onclick="playRule(\''+r.id+'\')">'
+          + '<div style="font-size:11px;font-weight:700;opacity:0.75;">'+r.ref+'</div>'
+          + '<div lang="ar" dir="rtl" style="font-family:var(--font-arabic);font-size:24px;margin-top:10px;">'+r.ar+'</div>'
+          + '<div style="font-weight:700;font-size:15px;margin-top:6px;">'+r.title+'</div>'
+          + '<div class="wave-row">'+bars+'</div></button>';
+      }).join("");
+      const cur = rules.find(r => r.id === activeRule);
+      document.getElementById("sound-detail").innerHTML = '<strong>'+cur.title+':</strong> <span style="color:var(--stone-600);">'+cur.tip+'</span>';
+    }
+    function playRule(id) {
+      activeRule = id;
+      playingRule = id;
+      renderSoundboard();
+      const cur = rules.find(r => r.id === id);
+      try {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (AC && cur) {
+          const ctx = new AC();
+          const now = ctx.currentTime;
+          cur.freqs.forEach((f, idx) => {
+            const o = ctx.createOscillator(), g = ctx.createGain();
+            o.frequency.setValueAtTime(f, now + idx * 0.35);
+            g.gain.setValueAtTime(0.001, now + idx * 0.35);
+            g.gain.exponentialRampToValueAtTime(0.05, now + idx * 0.35 + 0.08);
+            g.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.35 + 0.32);
+            o.connect(g); g.connect(ctx.destination);
+            o.start(now + idx * 0.35); o.stop(now + idx * 0.35 + 0.34);
+          });
+        }
+      } catch(e) {}
+      setTimeout(() => { playingRule = null; renderSoundboard(); }, 1800);
+    }
+    renderSoundboard();
+
+    function openTrialModal(goal) {
+      if (goal) document.getElementById("f-goal").value = goal;
+      try {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        if (tz && !document.getElementById("f-tz").value) document.getElementById("f-tz").value = tz;
+      } catch(e) {}
+      document.getElementById("trial-form").style.display = "block";
+      document.getElementById("trial-success").style.display = "none";
+      document.getElementById("trial-modal").classList.add("open");
+    }
+    function closeTrialModal() {
+      document.getElementById("trial-modal").classList.remove("open");
+    }
+    // ====== EDIT THESE TWO LINES ======
+    const WHATSAPP_NUMBER = "923000000000";   // digits only, with country code, no + sign
+    const CONTACT_DISPLAY = "+92 300 0000000"; // how the number looks on the page
+    // ==================================
+
+    document.getElementById("contact-number").textContent = CONTACT_DISPLAY;
+    document.getElementById("wa-link").href = "https://wa.me/" + WHATSAPP_NUMBER;
+    document.querySelectorAll(".contact-inline").forEach(el => el.textContent = CONTACT_DISPLAY);
+
+    function submitTrialForm(e) {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const text =
+        "Assalamu alaikum! I want a free trial class.%0A" +
+        "Name: " + encodeURIComponent(fd.get("fullName")) + "%0A" +
+        "Age group: " + encodeURIComponent(fd.get("ageGroup")) + "%0A" +
+        "Course: " + encodeURIComponent(fd.get("learningGoal")) + "%0A" +
+        "Time zone: " + encodeURIComponent(fd.get("timezone")) + "%0A" +
+        "Contact: " + encodeURIComponent(fd.get("contact"));
+      window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + text, "_blank");
+      document.getElementById("trial-form").style.display = "none";
+      document.getElementById("trial-success").style.display = "block";
+      document.getElementById("trial-success-msg").textContent =
+        "Thank you, " + fd.get("fullName") + ". WhatsApp is opening. Please press Send to finish your free trial request.";
+      return false;
+    }
+  </script>
+</body>
+</html>
