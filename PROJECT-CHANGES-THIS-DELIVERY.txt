@@ -1,0 +1,19 @@
+AS-SABUUR WEBSITE — VISIBLE CHANGES IN THIS ZIP
+
+This project is based on the original as-sabuur-main.zip with the supplied changes archive merged into it.
+
+Changes included:
+- Added the Experience page at /experience.
+- Added the Class Details page at /class-details.
+- Added the Global Trust page at /global-trust.
+- Added Pricing to the main navigation and academy footer links at /pricing.
+- Reworked the Pricing page, homepage pricing section, course-page fee references and related FAQ/Terms wording so they do not publish unapproved sample prices. Visitors are directed to request current fees.
+- Added Experience, Class Details and Global Trust to the sitemap.
+- Added a warning to the setup instructions that the optional sample-data seed script clears existing content rows and must not be run against a live database.
+- Retained the existing As-Sabuur design system, content pages, forms, images and application structure.
+
+Important setup note:
+This is a Next.js application, not a static HTML website. Extract the folder, install its dependencies, configure the environment variables in .env.example, and run the project using the README instructions. Database-backed forms and admin features require a configured PostgreSQL database.
+
+Verification:
+The source archive was checked for ZIP integrity. A production build has not yet been confirmed in this environment; do not treat database-backed actions as live until configured and tested with the academy's own credentials.

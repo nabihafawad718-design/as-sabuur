@@ -16,7 +16,7 @@ type CompassItem = {
 const staticItems: CompassItem[] = [
   { title: "Home", subtitle: "Courses, teaching approach and the free trial", href: "/", arabic: "الرئيسية", group: "Destinations" },
   { title: "Courses & Programs", subtitle: "Qaida, reading, Tajweed, Hifz and Quranic Arabic", href: "/courses", arabic: "الدورات", group: "Destinations" },
-  { title: "Pricing", subtitle: "Monthly plans, family discounts and prepayment", href: "/pricing", arabic: "الأسعار", group: "Destinations" },
+  { title: "Pricing", subtitle: "Request current lesson fees and discuss arrangements", href: "/pricing", arabic: "الأسعار", group: "Destinations" },
   { title: "About As-Sabuur", subtitle: "Our story, teaching philosophy and standards", href: "/about", arabic: "عن الدار", group: "Destinations" },
   { title: "Contact & Free Trial", subtitle: "Book a free 30-minute class or send a question", href: "/contact", arabic: "تواصل", group: "Destinations" },
   { title: "99 Names Gallery", subtitle: "Explore Al-Asma ul-Husna and the name As-Sabuur", href: "/names", arabic: "الأسماء الحسنى", group: "Destinations" },

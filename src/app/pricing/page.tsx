@@ -1,231 +1,116 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, Info } from "lucide-react";
+import { ArrowRight, CalendarDays, CheckCircle2, Clock3, MessageCircle, UserRound } from "lucide-react";
 import { PageHeader } from "@/components/ui/page-header";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { Reveal } from "@/components/ui/reveal";
-import { DawnBand } from "@/components/art/arch";
 import { CtaBand } from "@/components/home/sections";
-import { FaqBlock } from "@/components/home/faq-block";
-import { BookTrialButton } from "@/components/trial/trial-drawer";
-import { EXTENDED_LESSONS, FAMILY_DISCOUNT, INCLUDED, PLANS, PREPAY, perLesson, prepayTotal } from "@/data/pricing";
-import { PRICING_FAQS } from "@/data/faq";
 import { SITE } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Pricing — Online Quran Classes from $32/month",
+  title: "Pricing & Lesson Fees — As-Sabuur Quran Academy",
   description:
-    "Transparent monthly pricing for one-to-one online Quran classes: $32–$100 per month depending on weekly frequency. Family discounts, prepayment savings, free 30-minute trial.",
+    "Ask As-Sabuur about current fees for one-to-one online Quran lessons. Discuss lesson frequency, duration and the learner's goals before deciding.",
   alternates: { canonical: "/pricing" },
   openGraph: {
-    title: "Pricing · As-Sabuur",
-    description:
-      "Monthly one-to-one online Quran classes from $32. No registration fee, no long-term contract, free trial.",
+    title: "Pricing & Lesson Fees · As-Sabuur",
+    description: "Understand how lesson arrangements are discussed and request current fee information.",
     url: `${SITE.url}/pricing`,
   },
 };
 
-const breadcrumbs = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
-    { "@type": "ListItem", position: 2, name: "Pricing", item: `${SITE.url}/pricing` },
-  ],
-};
+const considerations = [
+  {
+    icon: Clock3,
+    title: "Lesson length",
+    text: "Tell us whether you are looking for a shorter session or more time for focused reading, Tajweed or memorisation.",
+  },
+  {
+    icon: CalendarDays,
+    title: "Weekly frequency",
+    text: "Discuss how often the learner hopes to meet. We can talk through a realistic routine around school, work and family life.",
+  },
+  {
+    icon: UserRound,
+    title: "The learner’s goals",
+    text: "A beginner learning Qaida may need a different lesson plan from an adult improving recitation or a student working on Hifz.",
+  },
+];
+
+const included = [
+  "A one-to-one conversation about the learner’s starting point",
+  "Guidance on a suitable course and learning rhythm",
+  "A chance to ask questions before making a decision",
+  "No pressure to continue after the introductory trial",
+];
 
 export default function PricingPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Pricing · الْأُجُور"
-        title={
-          <>
-            Clear monthly pricing. <span className="italic text-pine-700">No surprises.</span>
-          </>
-        }
-        description="Thirty-minute one-to-one lessons, billed per learner per month. No registration fee, no materials fee, no long-term contract — and the first trial class is free."
+        eyebrow="Fees & arrangements"
+        title={<>A clear conversation <span className="italic text-pine-700">before you decide.</span></>}
+        description="We want families to understand the lesson arrangement before committing. Contact the academy for current fees and discuss a schedule that makes sense for the learner."
         crumbs={[["Pricing", "/pricing"]]}
       />
 
-      <div className="overflow-hidden border-b border-ivory-200">
-        <DawnBand className="block h-[130px] w-full sm:h-[160px]" />
-      </div>
-
       <section className="wrap py-14 lg:py-20">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {PLANS.map((plan, i) => (
-            <Reveal key={plan.id} delay={i * 60}>
-              <div
-                className={`relative flex h-full flex-col rounded-[1.5rem] border p-7 ${
-                  plan.popular
-                    ? "border-gold-400/60 bg-pine-950 text-ivory-50 shadow-lift"
-                    : "border-ivory-200 bg-white text-pine-950 shadow-card"
-                }`}
-              >
-                {plan.popular && (
-                  <span className="absolute right-6 top-6 rounded-full bg-gold-400/20 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-gold-300">
-                    Most families
-                  </span>
-                )}
-                <p className={`text-[11px] font-bold uppercase tracking-[0.16em] ${plan.popular ? "text-gold-300" : "text-gold-700"}`}>
-                  {plan.name}
-                </p>
-                <div className="mt-3 flex items-baseline gap-1.5">
-                  <span className="font-display text-5xl leading-none">${plan.monthly}</span>
-                  <span className={`text-sm ${plan.popular ? "text-ivory-100/60" : "text-stone-500"}`}>/month</span>
-                </div>
-                <p className={`mt-1 text-xs ${plan.popular ? "text-ivory-100/60" : "text-stone-500"}`}>
-                  {plan.lessonsPerMonth} lessons · {perLesson(plan)} per lesson
-                </p>
-                <p className={`mt-5 text-sm leading-relaxed ${plan.popular ? "text-ivory-100/80" : "text-stone-600"}`}>
-                  {plan.summary}
-                </p>
-                <p className={`mt-4 text-xs ${plan.popular ? "text-ivory-100/55" : "text-stone-500"}`}>
-                  <span className="font-semibold">Best for:</span> {plan.bestFor}
-                </p>
-                <div className="mt-auto pt-6">
-                  <BookTrialButton className={`btn w-full !py-3.5 ${plan.popular ? "btn-gold" : "btn-primary"}`}>
-                    Try it free first
-                  </BookTrialButton>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-
-          <div className="flex h-full flex-col justify-center rounded-[1.5rem] border border-dashed border-gold-400/50 bg-gold-100/30 p-7">
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-gold-700">Extended lessons</p>
-            <p className="mt-3 text-sm leading-relaxed text-stone-600">
-              Some students need longer sessions — usually Hifz revision or advanced Tajweed. Forty-five and
-              sixty-minute lessons are available on request.
-            </p>
-            <ul className="mt-4 space-y-1.5 text-sm text-stone-700">
-              {EXTENDED_LESSONS.map((e) => (
-                <li key={e.length} className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500" />
-                  {e.length}: ${e.twiceWeekly}/mo twice weekly · ${e.fiveWeekly}/mo five times weekly
-                </li>
-              ))}
-            </ul>
-            <Link href="/contact" className="mt-5 inline-flex text-sm font-semibold text-pine-800 underline decoration-gold-400/50 underline-offset-4">
-              Ask about extended lessons
-            </Link>
-          </div>
-        </div>
-
-        <div className="mt-8 flex items-start gap-2.5 rounded-2xl border border-ivory-200 bg-white/70 p-4 text-xs leading-relaxed text-stone-600">
-          <Info className="mt-0.5 h-4 w-4 shrink-0 text-pine-700" />
-          <p>
-            Prices are in US dollars per learner. Payment is not taken through this website: once you and the teacher
-            agree a plan, enrolment and payment are arranged directly with the academy. Local currencies may be
-            accepted — ask when you book.
-          </p>
-        </div>
-      </section>
-
-      <section className="border-y border-ivory-200 bg-ivory-100/50">
-        <div className="wrap py-16 lg:py-20">
-          <SectionHeading
-            eyebrow="Prepayment"
-            title="Save by paying for a longer term"
-            description="Optional, not required. Monthly is the default; prepayment simply reduces the rate for families who already know they are staying."
-          />
-
-          <div className="mt-8 overflow-x-auto rounded-2xl border border-ivory-200 bg-white shadow-card">
-            <table className="w-full min-w-[680px] text-left text-sm">
-              <thead>
-                <tr className="border-b border-ivory-200 bg-ivory-100/70 text-xs uppercase tracking-wider text-stone-500">
-                  <th className="px-4 py-3 font-semibold">Plan</th>
-                  {PREPAY.map((p) => (
-                    <th key={p.id} className="px-4 py-3 font-semibold">
-                      {p.label}
-                      {p.discount > 0 && (
-                        <span className="ml-1.5 rounded-full bg-gold-100 px-2 py-0.5 text-[10px] font-bold text-gold-700">
-                          {p.note}
-                        </span>
-                      )}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {PLANS.map((plan) => (
-                  <tr key={plan.id} className="border-b border-ivory-200 last:border-0">
-                    <td className="px-4 py-3 font-semibold text-pine-950">
-                      {plan.name}
-                      <span className="ml-2 text-xs font-normal text-stone-500">{plan.lessonsPerMonth} lessons</span>
-                    </td>
-                    {PREPAY.map((p) => (
-                      <td key={p.id} className="px-4 py-3 text-stone-700">
-                        ${prepayTotal(plan, p.months, p.discount)}
-                        <span className="ml-1 text-xs text-stone-400">
-                          {p.months > 1 ? `for ${p.months} months` : "/mo"}
-                        </span>
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-3 text-xs text-stone-500">
-            Totals are rounded to the nearest dollar. Prepaid terms are non-refundable except where required by law;
-            the monthly option exists precisely so you do not have to commit before you are sure.
-          </p>
-        </div>
-      </section>
-
-      <section className="wrap py-16 lg:py-20">
-        <div className="grid gap-10 lg:grid-cols-2">
+        <div className="grid items-start gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
           <div>
-            <SectionHeading eyebrow="Included" title="Every plan includes" />
-            <ul className="mt-6 space-y-3">
-              {INCLUDED.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-stone-700">
-                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-pine-900 text-gold-300">
-                    <Check className="h-3 w-3" strokeWidth={3} />
+            <p className="eyebrow">How fees are discussed</p>
+            <h2 className="mt-3 max-w-xl font-display text-3xl leading-tight text-pine-950 sm:text-4xl">
+              The right lesson plan starts with the right questions.
+            </h2>
+            <p className="mt-5 max-w-2xl leading-7 text-stone-600">
+              Lesson fees depend on the arrangement discussed with the academy. Rather than showing unconfirmed package prices, we will share the current fee information directly when you enquire.
+            </p>
+            <div className="mt-8 space-y-4">
+              {considerations.map(({ icon: Icon, title, text }, index) => (
+                <article key={title} className="flex gap-4 rounded-2xl border border-ivory-200 bg-white p-5 shadow-card">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-ivory-100 text-pine-800">
+                    <Icon className="h-5 w-5" strokeWidth={1.7} />
                   </span>
-                  {item}
-                </li>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.15em] text-gold-700">0{index + 1}</p>
+                    <h3 className="mt-1 font-display text-xl text-pine-950">{title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-stone-600">{text}</p>
+                  </div>
+                </article>
               ))}
-            </ul>
+            </div>
           </div>
 
-          <div className="rounded-[1.5rem] border border-ivory-200 bg-white p-7 shadow-card">
-            <h2 className="text-3xl">Families</h2>
-            <p className="mt-2 text-sm leading-relaxed text-stone-600">
-              Siblings usually learn best in separate lessons, at their own level. The discount applies to the second
-              and third learner in the same household.
-            </p>
-            <ul className="mt-5 space-y-3">
-              {FAMILY_DISCOUNT.map((d) => (
-                <li key={d} className="flex items-start gap-3 text-sm text-stone-700">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500" />
-                  {d}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-5 rounded-xl bg-ivory-100/80 p-4 text-xs leading-relaxed text-stone-600">
-              Example: two children on Steady ($52 each) would pay $52 + $46.80 = $98.80 per month.
-            </p>
-          </div>
+          <aside className="relative overflow-hidden rounded-[1.75rem] bg-pine-950 p-7 text-ivory-50 shadow-lift sm:p-9">
+            <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gold-400/10 blur-3xl" />
+            <div className="relative">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-gold-300">Your next step</p>
+              <h2 className="mt-4 font-display text-3xl leading-tight sm:text-4xl">Ask for the current fees.</h2>
+              <p className="mt-4 text-sm leading-7 text-ivory-100/75">
+                Tell us which course you are considering, who the lessons are for and how often you would like to study. We can explain the available arrangements and answer your questions.
+              </p>
+              <ul className="mt-7 space-y-3">
+                {included.map((item) => (
+                  <li key={item} className="flex gap-3 text-sm leading-6 text-ivory-100/85">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-gold-300" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/contact" className="btn btn-gold mt-8 inline-flex w-full items-center justify-center gap-2 sm:w-auto">
+                Contact the academy <ArrowRight className="h-4 w-4" />
+              </Link>
+              <a href={`mailto:${SITE.email}`} className="mt-5 flex items-center gap-2 text-sm text-ivory-100/70 transition hover:text-gold-300">
+                <MessageCircle className="h-4 w-4" /> {SITE.email}
+              </a>
+            </div>
+          </aside>
+        </div>
+
+        <div className="mt-14 grid gap-5 border-t border-ivory-200 pt-10 md:grid-cols-3">
+          <div><p className="eyebrow">01 · Explore</p><h3 className="mt-2 font-display text-2xl text-pine-950">Choose a course</h3><p className="mt-2 text-sm leading-6 text-stone-600">See the subjects available for children and adults.</p><Link href="/courses" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-pine-800 hover:text-gold-700">View courses <ArrowRight className="h-4 w-4" /></Link></div>
+          <div><p className="eyebrow">02 · Understand</p><h3 className="mt-2 font-display text-2xl text-pine-950">Review class details</h3><p className="mt-2 text-sm leading-6 text-stone-600">Learn how one-to-one online lessons are arranged.</p><Link href="/class-details" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-pine-800 hover:text-gold-700">Class details <ArrowRight className="h-4 w-4" /></Link></div>
+          <div><p className="eyebrow">03 · Begin</p><h3 className="mt-2 font-display text-2xl text-pine-950">Book a free trial</h3><p className="mt-2 text-sm leading-6 text-stone-600">Talk through the learner’s needs before choosing a plan.</p><Link href="/contact" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-pine-800 hover:text-gold-700">Book a trial <ArrowRight className="h-4 w-4" /></Link></div>
         </div>
       </section>
-
-      <FaqBlock
-        items={PRICING_FAQS}
-        eyebrow="Billing questions"
-        title="Before you pay anything"
-        description="The trial is free. These are the questions that usually come next."
-        groupName="pricing-faq"
-      />
-
-      <CtaBand
-        title="Start with the free class, decide afterwards"
-        text="No card details are taken for the trial. If it is not right for your family, say so — there is nothing to cancel."
-      />
-
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
+      <CtaBand />
     </>
   );
 }

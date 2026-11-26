@@ -33,12 +33,14 @@ node -e "console.log(require('crypto').randomBytes(24).toString('base64url'))"
 
 Run it twice — once for the passcode, once for the secret.
 
-Then create the tables and seed optional content:
+Then create the tables. Only seed sample content if this is a brand-new empty database:
 
 ```bash
 npx drizzle-kit push      # creates tables from src/db/schema.ts
-npx tsx src/db/seed.ts    # optional: gatherings, essays, verses
 npm run dev
+
+# OPTIONAL, ONLY on a brand-new empty database:
+# npx tsx src/db/seed.ts
 ```
 
 Open http://localhost:3000 and check:
@@ -51,6 +53,8 @@ Open http://localhost:3000 and check:
 - [ ] `/admin` redirects to `/admin/login` when signed out
 
 ---
+
+**Important:** `src/db/seed.ts` deletes existing program, essay, reflection and verse rows before inserting sample content. Never run it against a database containing real academy data. The homepage and the Experience, Pricing, Class Details and Global Trust pages can be previewed without sample records; database-backed pages and forms require PostgreSQL.
 
 ## 3. Push to GitHub
 

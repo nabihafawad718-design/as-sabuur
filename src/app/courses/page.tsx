@@ -9,14 +9,13 @@ import { ArchGallery } from "@/components/art/arch";
 import { CtaBand } from "@/components/home/sections";
 import { BookTrialButton } from "@/components/trial/trial-drawer";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
-import { COURSES, planFor } from "@/data/courses";
-import { perLesson } from "@/data/pricing";
+import { COURSES } from "@/data/courses";
 import { SITE } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Courses — Qaida, Tajweed, Hifz & Quranic Arabic",
   description:
-    "Compare As-Sabuur's five online Quran courses: Noorani Qaida, Quran reading, Tajweed, Hifz and Quranic Arabic. Who each is for, what students learn, lesson structure and pricing.",
+    "Compare As-Sabuur's five online Quran courses: Noorani Qaida, Quran reading, Tajweed, Hifz and Quranic Arabic. Who each is for, what students learn, lesson structure and class details and lesson arrangements.",
   alternates: { canonical: "/courses" },
   openGraph: {
     title: "Courses & Programs · As-Sabuur",
@@ -121,7 +120,6 @@ export default function CoursesPage() {
       {/* Course sections */}
       <div className="space-y-0">
         {COURSES.map((course, index) => {
-          const plan = planFor(course);
           const dark = index % 2 === 1;
           return (
             <section
@@ -237,12 +235,9 @@ export default function CoursesPage() {
                     </ul>
                   </div>
                   <div className="rounded-2xl bg-pine-950 p-5 text-ivory-50 lg:w-56">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-gold-300">Recommended plan</p>
-                    <p className="mt-1 font-display text-2xl">{plan.name}</p>
-                    <p className="mt-1 text-xs text-ivory-100/70">
-                      {plan.lessonsPerMonth} lessons/month · {perLesson(plan)} each
-                    </p>
-                    <p className="mt-2 font-display text-3xl text-ivory-50">${plan.monthly}<span className="text-sm text-ivory-100/60">/mo</span></p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-gold-300">Discuss your lesson plan</p>
+                    <p className="mt-2 font-display text-2xl">A pace that fits</p>
+                    <p className="mt-2 text-xs leading-5 text-ivory-100/70">We can discuss lesson frequency and current fees after understanding the learner’s goals.</p>
                     <BookTrialButton className="btn btn-gold mt-4 w-full !py-2.5 !text-xs" goal={course.name}>
                       Try this course free
                     </BookTrialButton>
@@ -269,13 +264,11 @@ export default function CoursesPage() {
                 <th className="px-4 py-3 font-semibold">Level</th>
                 <th className="px-4 py-3 font-semibold">Ages</th>
                 <th className="px-4 py-3 font-semibold">Typical pace</th>
-                <th className="px-4 py-3 font-semibold">Plan</th>
+                <th className="px-4 py-3 font-semibold">Next step</th>
               </tr>
             </thead>
             <tbody>
-              {COURSES.map((c) => {
-                const plan = planFor(c);
-                return (
+              {COURSES.map((c) => (
                   <tr key={c.id} className="border-b border-ivory-200 last:border-0">
                     <td className="px-4 py-3 font-semibold text-pine-950">
                       <a href={`#${c.slug}`} className="hover:text-pine-700">
@@ -285,22 +278,13 @@ export default function CoursesPage() {
                     <td className="px-4 py-3 text-stone-600">{c.level}</td>
                     <td className="px-4 py-3 text-stone-600">{c.ages}</td>
                     <td className="px-4 py-3 text-stone-600">{c.typicalPace}</td>
-                    <td className="px-4 py-3 text-stone-600">
-                      {plan.name} · ${plan.monthly}/mo
-                    </td>
+                    <td className="px-4 py-3 text-stone-600">Discuss lesson options</td>
                   </tr>
-                );
-              })}
+              ))}
             </tbody>
           </table>
         </div>
-        <p className="mt-4 text-xs text-stone-500">
-          Prices are per learner in USD. See{" "}
-          <Link href="/pricing" className="link-quiet">
-            full pricing
-          </Link>{" "}
-          for family and prepayment discounts.
-        </p>
+        <p className="mt-4 text-xs text-stone-500">Contact the academy for current fee information and a lesson arrangement suited to the learner.</p>
       </section>
 
       <TestimonialsSection />

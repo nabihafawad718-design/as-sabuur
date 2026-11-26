@@ -45,13 +45,12 @@ export default function TermsPage() {
           <div>
             <h2 className="text-3xl">Fees and payment</h2>
             <p className="mt-3">
-              Fees are shown on the{" "}
+Current fees and lesson arrangements are shared directly by the academy when a family enquires. The{" "}
               <Link href="/pricing" className="link-quiet">
                 pricing page
               </Link>{" "}
-              in US dollars per learner per month. No payment is taken through this website: enrolment and payment are
-              arranged directly with the academy after the trial. Prices may change with reasonable notice; a change
-              will not apply to a prepaid term already paid for.
+              explains how to request this information. No payment is taken through this website; enrolment and any
+              payment arrangements are discussed directly with the academy.
             </p>
           </div>
 

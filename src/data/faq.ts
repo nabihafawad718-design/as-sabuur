@@ -38,9 +38,9 @@ export const HOME_FAQS: Faq[] = [
   },
   {
     id: 6,
-    question: "How does pricing and cancellation work?",
+    question: "How can I find out the current lesson fees?",
     answer:
-      "Lessons are billed monthly per learner, with no registration fee and no long-term contract. You can stop or pause at the end of any month with notice. Prepaying for three, six or twelve months reduces the monthly rate; family discounts apply to siblings.",
+      "Contact the academy with the course you are considering and the learner’s preferred schedule. We will share the current fee information and explain the available arrangements before you decide.",
   },
   {
     id: 7,
@@ -53,21 +53,21 @@ export const HOME_FAQS: Faq[] = [
 export const PRICING_FAQS: Faq[] = [
   {
     id: 1,
-    question: "Why is pricing per week rather than per hour?",
+    question: "How are lesson fees determined?",
     answer:
-      "Because that is how learning actually works. Two short lessons a week build far more retention than one long one, so plans are built around frequency. Each card shows the per-lesson rate as well, so you can compare it with any other academy.",
+      "Contact the academy to discuss the learner’s goals, lesson length and preferred weekly schedule. We will share the current fee information directly.",
   },
   {
     id: 2,
-    question: "Are there any hidden fees?",
+    question: "Where can I see the current fees?",
     answer:
-      "No registration fee, no materials fee, no charge for the trial. The price on the pricing page is the price. Payment processing is not connected to this website yet — enrolment is arranged with the academy directly.",
+      "The website does not publish unconfirmed package amounts. Please contact the academy for current fee information before making a decision.",
   },
   {
     id: 3,
-    question: "Can siblings share a lesson?",
+    question: "Can siblings learn at the same time?",
     answer:
-      "Siblings can share a lesson if their level is close enough that neither is held back, but one-to-one teaching is what makes the progress reliable. Most families book separate lessons and take the 10% second-learner discount.",
+      "Ask the academy about suitable arrangements for siblings. The teaching format and lesson plan should suit each learner’s level and needs.",
   },
   {
     id: 4,
@@ -77,8 +77,8 @@ export const PRICING_FAQS: Faq[] = [
   },
   {
     id: 5,
-    question: "Do you offer a discount for prepayment?",
+    question: "Are there family or prepayment discounts?",
     answer:
-      "Yes: 5% for three months, 10% for six months, and 15% for twelve months. Prepayment is optional; the monthly rate is the default.",
+      "Please ask the academy about any current family or prepayment arrangements when requesting fee information.",
   },
 ];
