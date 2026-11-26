@@ -1,0 +1,31 @@
+AS-SABUUR PROJECT MERGE REPORT
+Original archive: as-sabuur-main.zip
+Changes archive: as-sabuur-changes.zip
+Overlay files: 68
+Explicit deletion paths found: 18 (15 existing files removed; 3 listed public image paths were not present in the original archive)
+Deleted existing files:
+  public/images/learn-adult-quran.jpg
+  public/images/learn-adult-tajweed.jpg
+  public/images/learn-kid-laptop.jpg
+  public/images/learn-kid-tablet.jpg
+  public/images/sabuur-hero.jpg
+  assets/images/learn-adult-quran.jpg
+  assets/images/learn-adult-tajweed.jpg
+  assets/images/learn-kid-laptop.jpg
+  assets/images/learn-kid-tablet.jpg
+  assets/images/sabuur-hero.jpg
+  src/lib/wp-packager.ts
+  src/app/api/wp-theme/route.ts
+  src/app/api/wp-theme/wrap/route.ts
+  src/components/wp/wp-packager-client.tsx
+  src/components/home/trust-warmth.tsx
+  index.html
+  style.css
+  drizzle.config.json
+
+Validation performed:
+- Both source ZIP archives passed ZIP integrity testing.
+- Changes were overlaid on a fresh extraction of the original archive.
+- Explicit deletion list was applied where files existed.
+- JSON files were parsed where applicable.
+- Full Next.js typecheck/build has NOT been run; dependencies are not installed in this environment.
