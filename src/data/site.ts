@@ -65,10 +65,12 @@ export const SCHEDULE_PREFERENCES = [
 ] as const;
 
 export const PRIMARY_NAV = [
+  { href: "/experience", label: "Experience" },
   { href: "/courses", label: "Courses" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/about", label: "About" },
+  { href: "/class-details", label: "Class Details" },
   { href: "/contact", label: "Contact" },
+  { href: "/global-trust", label: "Global Trust" },
 ] as const;
 
 export const EXPLORE_NAV = [

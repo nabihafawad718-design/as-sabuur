@@ -7,7 +7,7 @@ import { ChevronDown, Compass, Menu, MessageCircle, Search, Sparkles, X } from "
 import { Logo } from "./logo";
 import { SanctuaryCompass } from "./compass";
 import { useTrialDrawer } from "@/components/trial/trial-drawer";
-import { EXPLORE_NAV, PRIMARY_NAV, SITE, whatsappHref } from "@/data/site";
+import { PRIMARY_NAV, SITE, whatsappHref } from "@/data/site";
 
 export function Header() {
   const pathname = usePathname();
@@ -15,7 +15,6 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [compassOpen, setCompassOpen] = useState(false);
-  const [exploreOpen, setExploreOpen] = useState(false);
   const wa = whatsappHref("Assalamu alaykum — I'd like to ask about online Quran classes.");
 
   useEffect(() => {
@@ -45,7 +44,6 @@ export function Header() {
 
   useEffect(() => {
     setOpen(false);
-    setExploreOpen(false);
   }, [pathname]);
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
@@ -100,6 +98,8 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`relative py-1 text-sm transition-colors hover:text-pine-900 ${
                   isActive(item.href) ? "font-semibold text-pine-900" : "font-medium text-stone-600"
                 }`}
@@ -109,43 +109,6 @@ export function Header() {
               </Link>
             ))}
 
-            <div
-              className="relative"
-              onMouseEnter={() => setExploreOpen(true)}
-              onMouseLeave={() => setExploreOpen(false)}
-            >
-              <button
-                type="button"
-                onClick={() => setExploreOpen((v) => !v)}
-                aria-expanded={exploreOpen}
-                className="inline-flex items-center gap-1 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-pine-900"
-              >
-                Explore
-                <ChevronDown className={`h-4 w-4 transition-transform ${exploreOpen ? "rotate-180" : ""}`} />
-              </button>
-              {exploreOpen && (
-                <div className="absolute left-1/2 top-full w-[560px] -translate-x-1/2 pt-3">
-                  <div className="grid grid-cols-2 gap-1 rounded-2xl border border-ivory-200 bg-white p-3 shadow-lift">
-                    {EXPLORE_NAV.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => setExploreOpen(false)}
-                        className="group rounded-xl p-3 transition hover:bg-sage-50"
-                      >
-                        <div className="flex items-center justify-between gap-2">
-                          <span className="text-sm font-semibold text-pine-950 group-hover:text-pine-800">{item.title}</span>
-                          <span className="rounded-full bg-gold-100 px-2 py-0.5 text-[10px] font-bold text-gold-700">
-                            {item.badge}
-                          </span>
-                        </div>
-                        <p className="mt-1 text-xs leading-relaxed text-stone-500">{item.desc}</p>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
           </nav>
 
           <div className="hidden items-center gap-2.5 lg:flex">
@@ -193,21 +156,12 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
                   className="flex items-center justify-between border-b border-ivory-200 py-4 font-display text-2xl text-pine-950"
                 >
                   {item.label}
-                </Link>
-              ))}
-              <p className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-gold-700">Explore</p>
-              {EXPLORE_NAV.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="flex items-center justify-between border-b border-ivory-200 py-3.5 text-base text-pine-900"
-                >
-                  {item.title}
                 </Link>
               ))}
               <button

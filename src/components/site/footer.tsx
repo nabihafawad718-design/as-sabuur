@@ -59,7 +59,7 @@ export function Footer() {
             <ul className="mt-5 space-y-3 text-sm">
               {learnLinks.map(([label, href]) => (
                 <li key={href}>
-                  <Link href={href} className="transition-colors hover:text-gold-300">
+                  <Link href={href} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-gold-300">
                     {label}
                   </Link>
                 </li>
@@ -72,7 +72,7 @@ export function Footer() {
             <ul className="mt-5 space-y-3 text-sm">
               {academyLinks.map(([label, href]) => (
                 <li key={href}>
-                  <Link href={href} className="transition-colors hover:text-gold-300">
+                  <Link href={href} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-gold-300">
                     {label}
                   </Link>
                 </li>
@@ -85,7 +85,7 @@ export function Footer() {
             <ul className="mt-5 space-y-3 text-sm">
               {communityLinks.map(([label, href]) => (
                 <li key={href}>
-                  <Link href={href} className="transition-colors hover:text-gold-300">
+                  <Link href={href} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-gold-300">
                     {label}
                   </Link>
                 </li>
@@ -125,10 +125,10 @@ export function Footer() {
         <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-ivory-100/50 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} {SITE.legalName}. All rights reserved.</p>
           <div className="flex flex-wrap gap-6">
-            <Link href="/privacy" className="hover:text-gold-300">
+            <Link href="/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-gold-300">
               Privacy
             </Link>
-            <Link href="/terms" className="hover:text-gold-300">
+            <Link href="/terms" target="_blank" rel="noopener noreferrer" className="hover:text-gold-300">
               Terms
             </Link>
             <a href={`mailto:${SITE.email}`} className="hover:text-gold-300">
